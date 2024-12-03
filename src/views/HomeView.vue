@@ -1,9 +1,7 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <pago-flash />
 </template>
+
+<script setup>
+import PagoFlash from '@/components/PagoFlash.vue'
+</script>
