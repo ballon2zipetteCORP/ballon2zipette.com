@@ -38,7 +38,20 @@
         <li>
           <img src="../assets/images/pago-flash/partenaires/ballon2zipette.jpg" alt="ballon2zipette" />
         </li>
+        <li>
+          <img src="../assets/images/pago-flash/partenaires/planBraquage.jpg" alt="planBraquage" />
+        </li>
       </ul>
+    </article>
+
+    <article class="selection">
+      <h2>Notre selection</h2>
+
+      <section>
+        <article>
+
+        </article>
+      </section>
     </article>
   </section>
 </template>
@@ -109,12 +122,6 @@
       }
     }
     &>article.partenaires {
-      margin-top: 5em;
-      &>h2 {
-        text-align: center;
-        margin-bottom: 1em;
-      }
-
       &>ul {
         display: flex;
         justify-content: center;
@@ -127,6 +134,15 @@
             width: 15em;
           }
         }
+      }
+    }
+
+    &>article.partenaires,
+    &>article.selection {
+      margin-top: 5em;
+      &>h2 {
+        text-align: center;
+        margin-bottom: 1em;
       }
     }
   }
