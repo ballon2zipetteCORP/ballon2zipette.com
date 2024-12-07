@@ -6,10 +6,14 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/ballon2zipette.com/",
   plugins: [
     vue(),
     vueDevTools(),
   ],
+  build: {
+    cssMinify: "lightningcss"
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
