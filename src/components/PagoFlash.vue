@@ -46,7 +46,7 @@
 
     <article class="selection">
       <h2>Notre offres</h2>
-
+      <div><span id = "codepromo">Code promo : BALLONMOMOZIPETTEBRAQUAGE</span></div>
       <section>
         <article v-for="offer in offers" :key="offer">
           <h4 v-if="offer.popular">Populaire</h4>
@@ -56,7 +56,6 @@
       </section>
     </article>
     <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
-
   </section>
 </template>
 
@@ -169,6 +168,22 @@ const offers = ref([
         text-align: center;
         margin-bottom: 1em;
       }
+      &>div{
+        display: flex;
+        justify-content: center;
+        &>span{
+          background-color: var(--orange);
+          color: var(--black);
+          width: fit-content;
+          border-radius: 0.3em;
+          padding: 5px  20px  5px  20px ;
+        }
+        &>span:hover {
+          background-color: var(--blue);
+        }
+
+      }
+
 
       &>section {
         display: flex;
