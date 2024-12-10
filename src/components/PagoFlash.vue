@@ -210,6 +210,9 @@ const offers = ref([
           &>h3 {
             font-family: "poppins-bold", sans-serif;
           }
+          &>h5 {
+            text-align: center;
+          }
         }
       }
     }
