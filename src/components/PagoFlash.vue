@@ -52,8 +52,8 @@
           <h4 v-if="offer.popular">Populaire</h4>
           <img :src="'images/pago-flash/thumbnails/'+offer.thumbnail+'.png'" :alt="offer.title" />
           <h3>{{ offer.title }}</h3>
+          <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
         </article>
-        <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
       </section>
     </article>
 
