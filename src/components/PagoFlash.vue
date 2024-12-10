@@ -42,6 +42,8 @@
       </ul>
     </article>
 
+
+
     <article class="selection">
       <h2>Notre offres</h2>
 
@@ -53,6 +55,8 @@
         </article>
       </section>
     </article>
+
+    <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
   </section>
 </template>
 
