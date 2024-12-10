@@ -54,8 +54,8 @@
           <h3>{{ offer.title }}</h3>
         </article>
       </section>
-      <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
     </article>
+    <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
 
   </section>
 </template>
