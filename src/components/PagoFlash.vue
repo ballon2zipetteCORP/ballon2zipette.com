@@ -53,8 +53,8 @@
           <img :src="'images/pago-flash/thumbnails/'+offer.thumbnail+'.png'" :alt="offer.title" />
           <h3>{{ offer.title }}</h3>
         </article>
-        <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
       </section>
+      <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
     </article>
 
   </section>
@@ -214,7 +214,8 @@ const offers = ref([
 
         }
         &>h5 {
-          left: 50%;
+          text-align: center;
+          margin-bottom: 1em;
         }
       }
     }
