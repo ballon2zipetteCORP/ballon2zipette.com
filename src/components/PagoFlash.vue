@@ -84,6 +84,13 @@ const offers = ref([
 </script>
 
 <style scoped>
+  @keyframes changeColor {
+  0% { background-color: var(--orange); }
+  25% { background-color: var(--green); }
+  50% { background-color: var(--yellow); }
+  75% { background-color: var(--red); }
+  100% { background-color:var(--blue); }
+}
 
   div.hero-header {
     margin: auto;
@@ -179,7 +186,7 @@ const offers = ref([
           padding: 5px  20px  5px  20px ;
         }
         &>span:hover {
-          background-color: var(--blue);
+          animation: changeColor 1s infinite;
         }
 
       }
