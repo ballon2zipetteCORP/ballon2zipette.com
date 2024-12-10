@@ -1,6 +1,6 @@
 <template>
   <div role="banner">
-    <h3>Promotion sur les Pago-flash pour noël ! Jusqu’à -50%</h3>
+    <h3>Distribution GRATUITE de Pago-Flash à la chiche de noël</h3>
   </div>
 
   <div class="hero-header">
@@ -65,7 +65,7 @@ import { ref } from 'vue'
 const offers = ref([
   {
     thumbnail: "pack-1",
-    title: "VodKH + 3 ballons OFFERT",
+    title: "VodKH + 3 ballons OFFERTS",
     popular: true
   },
   {
