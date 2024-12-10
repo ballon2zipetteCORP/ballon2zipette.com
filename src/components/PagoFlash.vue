@@ -1,6 +1,6 @@
 <template>
   <div role="banner">
-    <h3>Distribution GRATUITE de Pago-Flash à la chiche de noël</h3>
+    <h3>Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</h3>
   </div>
 
   <div class="hero-header">
@@ -46,12 +46,20 @@
 
     <article class="selection">
       <h2>Notre offres</h2>
-      <div><span id = "codepromo">Code promo : BALLONMOMOZIPETTEBRAQUAGE</span></div>
+      <div><span id = "codepromo">Code promo : BALLON66 | -66% sur l'ensemble de nos offres</span></div>
       <section>
         <article v-for="offer in offers" :key="offer">
           <h4 v-if="offer.popular">Populaire</h4>
           <img :src="'images/pago-flash/thumbnails/'+offer.thumbnail+'.png'" :alt="offer.title" />
           <h3>{{ offer.title }}</h3>
+
+          <footer>
+            <div class="quantity-selector">
+              <button @click="offer.quantity > 0 && offer.quantity--" :disabled="offer.quantity < 1">-</button>
+              <span>{{ offer.quantity }}</span>
+              <button @click="offer.quantity++">+</button>
+            </div>
+          </footer>
         </article>
       </section>
     </article>
@@ -65,24 +73,28 @@ import { ref, onMounted } from 'vue'
 onMounted(() => {
   document.title = "Pago-flash éphémère | Ballon22ipette.com";
 });
-  
+
 const offers = ref([
   {
     thumbnail: "pack-1",
     title: "VodKH + 3 ballons OFFERTS",
-    popular: true
+    popular: true,
+    quantity: 0
   },
   {
     thumbnail: "pack-2",
-    title: "Whisky-flash + formation CRYPTO"
+    title: "Whisky-flash + formation CRYPTO",
+    quantity: 0
   },
   {
     thumbnail: "vodka",
-    title: "VodKH"
+    title: "VodKH",
+    quantity: 0
   },
   {
     thumbnail: "whisky",
-    title: "Whisky-flash"
+    title: "Whisky-flash",
+    quantity: 0
   }
 ]);
 </script>
@@ -118,7 +130,6 @@ const offers = ref([
   div[role="banner"] {
     background-color: var(--orange);
     padding: .5em .8em;
-    height: 6vh;
 
     &>h3 {
       text-align: center;
@@ -187,7 +198,8 @@ const offers = ref([
           color: var(--black);
           width: fit-content;
           border-radius: 0.3em;
-          padding: 5px  20px  5px  20px ;
+          padding: 5px  20px  5px  20px;
+          cursor: pointer;
         }
         &>span:hover {
           animation: changeColor 1s infinite;
@@ -208,10 +220,9 @@ const offers = ref([
           flex-basis: 10em;
 
           border-radius: 15px;
-          padding: 1em 2em;
-
           text-align: center;
           position: relative;
+          padding: 1em 2em 4em;
 
           &>h4 {
             position: absolute;
@@ -237,7 +248,41 @@ const offers = ref([
             font-family: "poppins-bold", sans-serif;
           }
 
+          &>footer {
+            margin-top: .5em;
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            width: 100%;
 
+            &>div.quantity-selector {
+              display: flex;
+              align-items: center;
+              gap: 1em;
+              justify-content: center;
+
+              &>button {
+                padding: .5em .8em;
+                background-color: var(--black);
+                color: white;
+
+                border: 1px solid var(--gray-1);
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1em;
+                transition: all .5s ease;
+
+                &:disabled {
+                  opacity: .5;
+                  cursor: unset;
+                }
+
+                &:not(:disabled):hover {
+                  background-color: var(--black-2);
+                }
+              }
+            }
+          }
         }
 
       }
@@ -248,4 +293,13 @@ const offers = ref([
           margin-bottom: 1em;
       }
   }
+
+  /* RESPONSIVE */
+  @media screen and (max-width: 520px) {
+    section>article.about-us>div>div {
+      width: unset;
+      padding: 0 1em;
+    }
+  }
+
 </style>

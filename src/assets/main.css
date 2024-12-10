@@ -25,6 +25,8 @@
 :root {
   --black: #1C1C1C;
   --black-2: #111111;
+  --gray-1: #454545;
+
   --blue : #8ae4ff;
   --orange: #FAC748;
   --yellow:#f5ff82;
@@ -36,4 +38,8 @@ body {
   background-color: var(--black);
   font-family: 'poppins-regular', sans-serif;
   color: white;
+}
+
+b {
+  font-family: "poppins-bold", sans-serif;
 }
