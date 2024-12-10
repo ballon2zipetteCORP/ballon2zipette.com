@@ -1,6 +1,12 @@
 <template>
   <div role="banner">
-    <h3>Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</h3>
+    <div class = "content">
+      <h3 v-for="(item, index) in repeatedItems" :key="index">
+        ❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄
+      </h3>
+
+    </div>
+
   </div>
 
   <div class="hero-header">
@@ -56,17 +62,32 @@
               <button @click="offer.quantity > 0 && offer.quantity--" :disabled="offer.quantity < 1">-</button>
               <span>{{ offer.quantity }}</span>
               <button @click="offer.quantity++">+</button>
+              <button v-if="offer.quantity > 0">commander</button>
             </div>
+
+
           </footer>
         </article>
       </section>
     </article>
+
+    <div class="telegram">
+      <h2>Rejoins le télégram maintenant</h2>
+      <h4>Si tu ne rejoins pas samos viendra dans tes rêves.</h4>
+
+      <img src="/images/telegram-link.jpeg" alt="telegram link" />
+      <span><a target="_blank" href="https://t.me/+ZSKuml6mYhNmZTU0">Ou via le lien</a></span>
+
+      <footer>
+      </footer>
+    </div>
+
     <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 onMounted(() => {
   document.title = "Pago-flash éphémère | Ballon22ipette.com";
@@ -95,16 +116,40 @@ const offers = ref([
     quantity: 0
   }
 ]);
+
+// Message de défilement
+const message = "❄️🎄Distribution GRATUITE de Pago-Flash à la chiche de noël ❄️🎄";
+
+// Nombre d'éléments à afficher
+const numberOfMessages = ref(30);
+
+// Création des éléments répétés pour le défilement
+const repeatedItems = computed(() => {
+  let items = [];
+  for (let i = 0; i < numberOfMessages.value; i++) {
+    items.push(message);
+  }
+  return items;
+});
+
 </script>
 
 <style scoped>
   @keyframes changeColor {
-  0% { background-color: var(--orange); }
-  25% { background-color: var(--green); }
-  50% { background-color: var(--yellow); }
-  75% { background-color: var(--red); }
-  100% { background-color:var(--blue); }
-}
+    0% { background-color: var(--orange); }
+    25% { background-color: var(--green); }
+    50% { background-color: var(--yellow); }
+    75% { background-color: var(--red); }
+    100% { background-color:var(--blue); }
+  }
+  @keyframes scroll-left {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 
   div.hero-header {
     margin: auto;
@@ -126,13 +171,27 @@ const offers = ref([
   }
 
   div[role="banner"] {
+    overflow: hidden;
     background-color: var(--orange);
     padding: .5em .8em;
 
-    &>h3 {
-      text-align: center;
-      color: var(--black);
+    &>div.content{
+      display: flex;
+      gap:20px;
+      animation: scroll-left 60s linear infinite;
+      &>h3 {
+        padding: 1em 2em;
+        display: inline-block;
+        text-align: center;
+        color: var(--black);
+        white-space: nowrap;
     }
+    &>div.content::after{
+      content: inherit;
+      display: inline-block;
+    }
+    }
+
   }
 
   section {
@@ -286,6 +345,30 @@ const offers = ref([
       }
 
     }
+
+    &>div.telegram{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap : 1em;
+
+      &>img{
+
+        width: 10em;
+      }
+
+      &>span{
+        background-color: var(--orange);
+        color: var(--black);
+        width: fit-content;
+        border-radius: 0.3em;
+        padding: 5px  20px  5px  20px;
+        cursor: pointer;
+      }
+
+    }
+
     h5 {
           text-align: center;
           margin-bottom: 1em;
