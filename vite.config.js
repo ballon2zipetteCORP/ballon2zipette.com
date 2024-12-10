@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/ballon2zipette.com/",
+  //base: "/ballon2zipette.com/",
   plugins: [
     vue(),
     vueDevTools(),
