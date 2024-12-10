@@ -52,8 +52,8 @@
           <h4 v-if="offer.popular">Populaire</h4>
           <img :src="'images/pago-flash/thumbnails/'+offer.thumbnail+'.png'" :alt="offer.title" />
           <h3>{{ offer.title }}</h3>
-          <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
         </article>
+        <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
       </section>
     </article>
 
@@ -211,9 +211,10 @@ const offers = ref([
             font-family: "poppins-bold", sans-serif;
           }
 
-          &>h5 {
-            left: 50%;
-          }
+
+        }
+        &>h5 {
+          left: 50%;
         }
       }
     }
