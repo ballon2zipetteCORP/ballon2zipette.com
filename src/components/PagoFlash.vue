@@ -217,7 +217,7 @@ const offers = ref([
       }
 
     }
-    &>h5 {
+    h5 {
           text-align: center;
           margin-bottom: 1em;
       }
