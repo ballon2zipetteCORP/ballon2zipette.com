@@ -19,7 +19,7 @@
             viennent des meilleures coins du monde.</p>
         </div>
         <div>
-          <h2>Des partenaires d'exceptions</h2>
+          <h2>Des partenaires de renom</h2>
           <p>Nos partenaires fournissent les meilleurs flash de toute la région. Nasdas, Samos, Assia, mettent un point d'honneur à fournir les meilleurs ballons pour aller avec le bon flash, comme du vin quoi.</p>
         </div>
       </div>
@@ -41,8 +41,6 @@
         </li>
       </ul>
     </article>
-
-
 
     <article class="selection">
       <h2>Notre offres</h2>

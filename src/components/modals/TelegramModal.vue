@@ -15,6 +15,24 @@
   </modal-default>
 </template>
 
+<script setup>
+import ModalDefault from '@/components/ui/ModalDefault.vue'
+
+defineProps({
+  showModal: {
+    type: Boolean,
+    required: true
+  }
+});
+
+const emit = defineEmits(["close"]);
+
+function setAsJoined() {
+  localStorage.setItem("telegram_joined", "true");
+  emit("close");
+}
+</script>
+
 <style scoped>
 div.content {
   display: flex;
@@ -72,21 +90,3 @@ footer {
   }
 }
 </style>
-
-<script setup>
-import ModalDefault from '@/components/ui/ModalDefault.vue'
-
-defineProps({
-  showModal: {
-    type: Boolean,
-    required: true
-  }
-});
-
-const emit = defineEmits(["close"]);
-
-function setAsJoined() {
-  localStorage.setItem("telegram_joined", "true");
-  emit("close");
-}
-</script>
