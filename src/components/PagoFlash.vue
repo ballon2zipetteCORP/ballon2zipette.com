@@ -206,6 +206,10 @@ const totalQuantity = computed(() => {
         white-space: nowrap;
         animation: scroll var(--time) linear infinite;
         animation-delay: calc(var(--time) * -1);
+
+        &>span{
+          color : var(--black);
+        }
       }
 
       &>div:nth-child(2){
