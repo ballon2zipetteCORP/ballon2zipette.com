@@ -62,13 +62,13 @@
               <button @click="offer.quantity > 0 && offer.quantity--" :disabled="offer.quantity < 1">-</button>
               <span>{{ offer.quantity }}</span>
               <button @click="offer.quantity++">+</button>
-              <button v-if="offer.quantity > 0">commander</button>
             </div>
 
 
           </footer>
         </article>
       </section>
+      <button class="commander" v-if="totalQuantity > 0">Commander x{{ totalQuantity }}</button>
     </article>
 
     <div class="telegram">
@@ -117,6 +117,12 @@ const offers = ref([
   }
 ]);
 
+const totalQuantity = computed(() => {
+  return offers.value.reduce((a, b) => {
+    return a + b.quantity;
+  }, 0);
+});
+
 // Message de défilement
 const message = "❄️🎄Distribution GRATUITE de Pago-Flash à la chiche de noël ❄️🎄";
 
@@ -149,6 +155,20 @@ const repeatedItems = computed(() => {
     to {
       transform: translateX(-100%);
     }
+  }
+
+  .commander {
+      display: block;
+      width: fit-content;
+      margin: auto; 
+      color: var(--black);
+      font-size: 1em;
+      background-color: var(--orange);
+      border-radius: 0.3em;
+      cursor: pointer;
+      padding: 5px 20px;
+      border: none;
+      margin-bottom: 20px;
   }
 
   div.hero-header {
