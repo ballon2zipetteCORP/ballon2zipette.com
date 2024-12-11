@@ -1,6 +1,6 @@
 <template>
   <div role="banner">
-    <div class = "content" style="--time:15s">
+    <div class = "content" style="--time:20s">
       <div>
         <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
         <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
@@ -194,8 +194,9 @@ const totalQuantity = computed(() => {
 
   div[role="banner"] {
     background-color: var(--orange);
-    padding: .5em .8em;
-
+    padding: 1em .8em;
+    gap : 0px;
+    font-size: 30px;
     &>div.content{
       overflow: hidden;
       width: max-content;
