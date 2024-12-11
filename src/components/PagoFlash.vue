@@ -121,7 +121,7 @@ const offers = ref([
   },
   {
     thumbnail: "pack-2",
-    title: "WhiskyCocaradec + formation CRYPTO",
+    title: "Whisky-flash + formation CRYPTO",
     quantity: 0
   },
   {
@@ -131,7 +131,7 @@ const offers = ref([
   },
   {
     thumbnail: "whisky",
-    title: "WhiskyCocaradec",
+    title: "Whisky-flash",
     quantity: 0
   }
 ]);
