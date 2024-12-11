@@ -75,7 +75,19 @@
           </footer>
         </article>
       </section>
-      <button class="commander" v-if="totalQuantity > 0">Commander x{{ totalQuantity }}</button>
+      <button class="commander" @click="commander" v-if="totalQuantity > 0">Commander x{{ totalQuantity }}</button>
+      <div>
+        <div class="ordered" v-if="orderedCheck && totalQuantity > 0">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required>
+
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" required>
+
+            <input type="submit" value="Envoyer">
+      </div>
+      </div>
+
     </article>
 
     <div class="telegram">
@@ -94,7 +106,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed,watch } from 'vue'
 
 onMounted(() => {
   document.title = "Pago-flash éphémère | Ballon22ipette.com";
@@ -123,11 +135,24 @@ const offers = ref([
     quantity: 0
   }
 ]);
-
+const orderedCheck = ref(false);
 const totalQuantity = computed(() => {
   return offers.value.reduce((a, b) => {
     return a + b.quantity;
   }, 0);
+});
+
+function commander() {
+  if (totalQuantity.value > 0) {
+    orderedCheck.value = true;
+  }
+}
+
+// Surveiller totalQuantity pour réinitialiser orderedCheck si nécessaire [CHATGPT]
+watch(totalQuantity, (newVal) => {
+  if (newVal === 0) {
+    orderedCheck.value = false;
+  }
 });
 
 </script>
@@ -370,10 +395,49 @@ const totalQuantity = computed(() => {
         }
 
       }
+      &>div{
+        &>div.ordered{
+          background:  var(--black-2);
+          border-radius: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          vertical-align: center;
+          height: 5em;
+          gap:20px;
+          width: 50em;
+          &>label{
+            display: block;
+          }
+          input[type="text"] {
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+          }
+          input[type="submit"] {
+            padding: 0.7em;
+            border: none;
+            border-radius: 4px;
+            background: var(--orange);
+            color: var(--black);
+            font-size: 1em;
+            cursor: pointer;
+
+          }
+          input[type="submit"]:hover {
+            animation: changeColor 1s infinite;
+          }
+        }
+      }
+
 
     }
 
+
+
     &>div.telegram{
+      margin-top: 100px;
       display: flex;
       flex-direction: column;
       text-align: center;
