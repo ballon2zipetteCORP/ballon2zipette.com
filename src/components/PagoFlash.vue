@@ -163,15 +163,14 @@ const totalQuantity = computed(() => {
   .commander {
       display: block;
       width: fit-content;
-      margin: auto;
       color: var(--black);
-      font-size: 1em;
+      font-size: 1.4em;
       background-color: var(--orange);
       border-radius: 0.3em;
       cursor: pointer;
-      padding: 5px 20px;
+      padding: 10px 20px;
       border: none;
-      margin-bottom: 20px;
+      margin: auto auto 20px;
   }
 
   div.hero-header {
@@ -206,12 +205,12 @@ const totalQuantity = computed(() => {
       &>div{
         white-space: nowrap;
         animation: scroll var(--time) linear infinite;
-        animation-delay: calc(var(--time)*-1);
+        animation-delay: calc(var(--time) * -1);
       }
 
       &>div:nth-child(2){
         animation: scroll2 var(--time) linear infinite;
-        animation-delay: calc(var(--time)/-2);
+        animation-delay: calc(var(--time) / -2);
       }
     }
 
