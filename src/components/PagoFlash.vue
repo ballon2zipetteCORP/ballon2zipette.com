@@ -1,9 +1,16 @@
 <template>
   <div role="banner">
-    <div class = "content">
-      <h3 v-for="(item, index) in repeatedItems" :key="index">
-        ❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄
-      </h3>
+    <div class = "content" style="--time:15s">
+      <div>
+        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
+        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
+        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
+      </div>
+      <div>
+        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
+        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
+        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
+      </div>
 
     </div>
 
@@ -87,7 +94,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 onMounted(() => {
   document.title = "Pago-flash éphémère | Ballon22ipette.com";
@@ -123,21 +130,6 @@ const totalQuantity = computed(() => {
   }, 0);
 });
 
-// Message de défilement
-const message = "❄️🎄Distribution GRATUITE de Pago-Flash à la chiche de noël ❄️🎄";
-
-// Nombre d'éléments à afficher
-const numberOfMessages = ref(30);
-
-// Création des éléments répétés pour le défilement
-const repeatedItems = computed(() => {
-  let items = [];
-  for (let i = 0; i < numberOfMessages.value; i++) {
-    items.push(message);
-  }
-  return items;
-});
-
 </script>
 
 <style scoped>
@@ -148,19 +140,30 @@ const repeatedItems = computed(() => {
     75% { background-color: var(--red); }
     100% { background-color:var(--blue); }
   }
-  @keyframes scroll-left {
-    from {
-      transform: translateX(100%);
+  @keyframes scroll {
+    0% {
+        transform: translateX(100%);
     }
-    to {
-      transform: translateX(-100%);
+
+    100% {
+        transform: translateX(-100%);
     }
-  }
+}
+
+@keyframes scroll2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+}
 
   .commander {
       display: block;
       width: fit-content;
-      margin: auto; 
+      margin: auto;
       color: var(--black);
       font-size: 1em;
       background-color: var(--orange);
@@ -191,25 +194,25 @@ const repeatedItems = computed(() => {
   }
 
   div[role="banner"] {
-    overflow: hidden;
     background-color: var(--orange);
     padding: .5em .8em;
 
     &>div.content{
+      overflow: hidden;
+      width: max-content;
       display: flex;
       gap:20px;
-      animation: scroll-left 60s linear infinite;
-      &>h3 {
-        padding: 1em 2em;
-        display: inline-block;
-        text-align: center;
-        color: var(--black);
+      white-space: nowrap;
+      &>div{
         white-space: nowrap;
-    }
-    &>div.content::after{
-      content: inherit;
-      display: inline-block;
-    }
+        animation: scroll var(--time) linear infinite;
+        animation-delay: calc(var(--time)*-1);
+      }
+
+      &>div:nth-child(2){
+        animation: scroll2 var(--time) linear infinite;
+        animation-delay: calc(var(--time)/-2);
+      }
     }
 
   }
