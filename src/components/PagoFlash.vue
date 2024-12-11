@@ -94,11 +94,7 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
 import { ref, onMounted, computed } from 'vue'
-=======
-import { ref, onMounted } from 'vue'
->>>>>>> bca5045 (ADD banderole)
 
 onMounted(() => {
   document.title = "Pago-flash éphémère | Ballon22ipette.com";
@@ -128,14 +124,11 @@ const offers = ref([
   }
 ]);
 
-<<<<<<< HEAD
 const totalQuantity = computed(() => {
   return offers.value.reduce((a, b) => {
     return a + b.quantity;
   }, 0);
 });
-=======
->>>>>>> bca5045 (ADD banderole)
 
 </script>
 
@@ -166,7 +159,6 @@ const totalQuantity = computed(() => {
         transform: translateX(-200%);
     }
 }
-<<<<<<< HEAD
 
   .commander {
       display: block;
@@ -181,8 +173,6 @@ const totalQuantity = computed(() => {
       border: none;
       margin-bottom: 20px;
   }
-=======
->>>>>>> bca5045 (ADD banderole)
 
   div.hero-header {
     margin: auto;
