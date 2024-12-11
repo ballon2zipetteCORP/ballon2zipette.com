@@ -1,6 +1,6 @@
 <template>
   <div role="banner">
-    <div class = "content" style="--time:10s">
+    <div class = "content" style="--time:20s">
       <div>
         <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
         <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
@@ -155,7 +155,7 @@ watch(totalQuantity, (newVal) => {
   }
 });
 
-</script>
+</script>l
 
 <style scoped>
   @keyframes changeColor {
@@ -228,13 +228,14 @@ watch(totalQuantity, (newVal) => {
       width: max-content;
       display: flex;
       gap:20px;
-      white-space: nowrap;
       &>div{
-        overflow: hidden;
+        min-width: 200px;
         animation: scroll var(--time) linear infinite;
         animation-delay: calc(var(--time) * -1);
 
+        white-space: nowrap;
         &>span{
+          overflow: hidden;
           white-space: nowrap;
           color : var(--black);
         }
