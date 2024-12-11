@@ -1,6 +1,6 @@
 <template>
   <div role="banner">
-    <div class = "content" style="--time:20s">
+    <div class = "content" style="--time:10s">
       <div>
         <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
         <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
@@ -222,6 +222,7 @@ watch(totalQuantity, (newVal) => {
     padding: 1em .8em;
     gap : 0px;
     font-size: 30px;
+    overflow: hidden;
     &>div.content{
       overflow: hidden;
       width: max-content;
@@ -229,11 +230,12 @@ watch(totalQuantity, (newVal) => {
       gap:20px;
       white-space: nowrap;
       &>div{
-        white-space: nowrap;
+        overflow: hidden;
         animation: scroll var(--time) linear infinite;
         animation-delay: calc(var(--time) * -1);
 
         &>span{
+          white-space: nowrap;
           color : var(--black);
         }
       }
