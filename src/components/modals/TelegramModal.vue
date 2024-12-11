@@ -1,5 +1,5 @@
 <template>
-  <modal-default @close="emit('close')" :modal-shown="showModal">
+  <modal-default @close="setAsJoined" :modal-shown="showModal">
     <div class="content">
       <h2>Rejoins le télégram maintenant</h2>
       <h4>Si tu ne rejoins pas samos viendra dans tes rêves.</h4>
