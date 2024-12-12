@@ -36,7 +36,7 @@ div.content {
   padding-top: 2em;
   padding-bottom: 1em;
 
-  width: 26em;
+  width: 23em;
 }
 
 h2 {
