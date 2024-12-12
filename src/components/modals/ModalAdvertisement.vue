@@ -6,7 +6,7 @@
         Ce site a été créé à but humoristique. Il n'a aucunement pour but de faire la promotion de la drogue ou quoi que ce soit d'autre (Cela inclut aussi le télégramme).
       </p>
 
-      <button class="primary">
+      <button @click="setAsAdvertised" class="primary">
         J'ai compris
       </button>
     </div>
