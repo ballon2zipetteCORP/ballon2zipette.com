@@ -89,6 +89,9 @@ div.modal[role="dialog"] {
     min-width: 30em;
     padding: 1em 2em;
 
+    max-height: 80%;
+    overflow: auto;
+
     &>button.close {
       background-color: transparent;
       border: unset;

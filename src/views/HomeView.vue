@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import PagoFlash from '@/components/PagoFlash.vue'
+import PagoFlash from '@/components/events/pago-flash/PagoFlash.vue'
 </script>

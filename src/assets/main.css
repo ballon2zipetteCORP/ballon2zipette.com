@@ -45,3 +45,50 @@ body {
 b {
   font-family: "poppins-bold", sans-serif;
 }
+
+/* INPUTS */
+div.form-field {
+  &>label {
+    display: block;
+    margin-bottom: .5em;
+    font-size: .9em;
+    color: var(--gray-2);
+
+    &.required {
+      &::after {
+        margin-left: .5em;
+        content: "*";
+        color: var(--red);
+      }
+    }
+  }
+
+  &>input {
+    background-color: var(--black-2);
+    border: 1px solid var(--gray-1);
+    color: white;
+
+    padding: .7em 1em;
+
+    border-radius: 10px;
+    font-family: "poppins-regular", sans-serif;
+
+    width: 100%;
+  }
+}
+
+button {
+  border: 1px solid transparent;
+  padding: .5em .8em;
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-family: "poppins-regular", sans-serif;
+  font-size: 1em;
+
+  transition: all .5s ease;
+
+  &:disabled {
+    opacity: .5;
+  }
+}

@@ -1,17 +1,9 @@
 <template>
   <div role="banner">
-    <div class = "content" style="--time:20s">
-      <div>
-        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
-        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
-        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
-      </div>
-      <div>
-        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
-        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
-        <span>❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄</span>
-      </div>
-
+    <div class="content">
+      <h4 v-for="j in Array(3).fill(null)" :key="j+1">
+          ❄️🎄Distribution <b>GRATUITE</b> de Pago-Flash à la chiche de noël ❄️🎄
+      </h4>
     </div>
 
   </div>
@@ -44,20 +36,20 @@
 
       <ul>
         <li>
-          <img src="/images/pago-flash/partenaires/momoplansnap.jpg" alt="momoplansnap" />
-        </li>
-        <li>
           <img src="/images/pago-flash/partenaires/ballon2zipette.jpg" alt="ballon2zipette" />
         </li>
         <li>
           <img src="/images/pago-flash/partenaires/planBraquage.jpg" alt="planBraquage" />
+        </li>
+        <li>
+          <img src="/images/pago-flash/partenaires/momoplansnap.jpg" alt="momoplansnap" />
         </li>
       </ul>
     </article>
 
     <article class="selection">
       <h2>Notre offres</h2>
-      <div><span id = "codepromo">Code promo : BALLON66 | -66% sur l'ensemble de nos offres</span></div>
+      <div><span>Code promo : BALLON66</span></div>
       <section>
         <article v-for="offer in offers" :key="offer">
           <h4 v-if="offer.popular">Populaire</h4>
@@ -70,24 +62,19 @@
               <span>{{ offer.quantity }}</span>
               <button @click="offer.quantity++">+</button>
             </div>
-
-
           </footer>
         </article>
       </section>
-      <button class="commander" @click="commander" v-if="totalQuantity > 0">Commander x{{ totalQuantity }}</button>
-      <div>
-        <div class="ordered" v-if="orderedCheck && totalQuantity > 0">
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required>
 
-            <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" required>
+      <button class="commander" @click="order" v-show="totalQuantity > 0">
+        Commander x{{ totalQuantity }}
+      </button>
 
-            <input type="submit" value="Envoyer">
-      </div>
-      </div>
-
+      <article class="chiche">
+        <h2>Des pago-flash et fruit-shot <b>GRATUIT</b> pour Noël !!!</h2>
+        <p>Le père Noël et ses lutins vous ont prévu une petite surprise pour la chiche de Noël... 🫣</p>
+        <img src="/images/pago-flash/msn.jpg" alt="msn" />
+      </article>
     </article>
 
     <div class="telegram">
@@ -103,25 +90,26 @@
 
     <h5>Contact : assiasamosbraquageforsure@ballon2zipette.com</h5>
   </section>
+
+  <pago-flash-order :show-modal="orderModal" @close="closeOrderModal" :data="customerOrder" />
 </template>
 
 <script setup>
-import { ref, onMounted, computed,watch } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
-onMounted(() => {
-  document.title = "Pago-flash éphémère | Ballon22ipette.com";
-});
+import PagoFlashOrder from '@/components/events/pago-flash/PagoFlashOrder.vue'
 
+// offers
 const offers = ref([
   {
     thumbnail: "pack-1",
-    title: "VodKH + 3 ballons OFFERTS",
+    title: "VodKH + initiation braquage",
     popular: true,
     quantity: 0
   },
   {
     thumbnail: "pack-2",
-    title: "Whisky-flash + formation CRYPTO",
+    title: "Fruit-shot + formation CRYPTO",
     quantity: 0
   },
   {
@@ -130,34 +118,43 @@ const offers = ref([
     quantity: 0
   },
   {
-    thumbnail: "whisky",
-    title: "Whisky-flash",
+    thumbnail: "fruit-shot",
+    title: "Fruit-shot",
     quantity: 0
   }
 ]);
-const orderedCheck = ref(false);
-const totalQuantity = computed(() => {
-  return offers.value.reduce((a, b) => {
-    return a + b.quantity;
-  }, 0);
-});
 
-function commander() {
-  if (totalQuantity.value > 0) {
-    orderedCheck.value = true;
-  }
+// total
+const totalQuantity = computed(() =>
+  offers.value.reduce((a, b) => a + b.quantity, 0)
+);
+
+/** ORDER GESTION **/
+
+// customer's order
+const orderModal = ref(false);
+
+// get at least all items that gets one of quantity
+const customerOrder = computed(() =>
+  offers.value.filter(({ quantity }) => quantity > 0)
+);
+
+function order() {
+  orderModal.value = true;
+}
+function closeOrderModal() {
+  orderModal.value = false;
 }
 
-// Surveiller totalQuantity pour réinitialiser orderedCheck si nécessaire [CHATGPT]
-watch(totalQuantity, (newVal) => {
-  if (newVal === 0) {
-    orderedCheck.value = false;
-  }
-});
+/** ORDER GESTION **/
 
-</script>l
+onMounted(() => {
+  document.title = "Pago-flash éphémère | Ballon22ipette.com";
+});
+</script>
 
 <style scoped>
+  /* smell CSS but anyway.... */
   @keyframes changeColor {
     0% { background-color: var(--orange); }
     25% { background-color: var(--green); }
@@ -165,37 +162,36 @@ watch(totalQuantity, (newVal) => {
     75% { background-color: var(--red); }
     100% { background-color:var(--blue); }
   }
-  @keyframes scroll {
-    0% {
-        transform: translateX(100%);
-    }
 
-    100% {
-        transform: translateX(-100%);
-    }
-}
+  @keyframes scrolling-text {
+    to { transform: translateX(-100%); }
+  }
 
-@keyframes scroll2 {
-    0% {
+  div[role="banner"] {
+    background-color: var(--orange);
+    padding: .5em 0;
+    font-size: 30px;
+    overflow: hidden;
+
+    &>div.content {
+      display: flex;
+      gap: .5em;
+      align-items: center;
+      overflow: hidden;
+
+      &>* {
+        white-space: nowrap;
+
+        display: flex;
+        gap: .5em;
+        flex-shrink: 0;
+        align-items: center;
+
         transform: translateX(0);
+        animation: scrolling-text 4s linear infinite;
+      }
     }
 
-    100% {
-        transform: translateX(-200%);
-    }
-}
-
-  .commander {
-      display: block;
-      width: fit-content;
-      color: var(--black);
-      font-size: 1.4em;
-      background-color: var(--orange);
-      border-radius: 0.3em;
-      cursor: pointer;
-      padding: 10px 20px;
-      border: none;
-      margin: auto auto 20px;
   }
 
   div.hero-header {
@@ -215,38 +211,6 @@ watch(totalQuantity, (newVal) => {
     &>h1 {
       font-family: "poppins-bold", sans-serif;
     }
-  }
-
-  div[role="banner"] {
-    background-color: var(--orange);
-    padding: 1em .8em;
-    gap : 0px;
-    font-size: 30px;
-    overflow: hidden;
-    &>div.content{
-      overflow: hidden;
-      width: max-content;
-      display: flex;
-      gap:20px;
-      &>div{
-        min-width: 200px;
-        animation: scroll var(--time) linear infinite;
-        animation-delay: calc(var(--time) * -1);
-
-        white-space: nowrap;
-        &>span{
-          overflow: hidden;
-          white-space: nowrap;
-          color : var(--black);
-        }
-      }
-
-      &>div:nth-child(2){
-        animation: scroll2 var(--time) linear infinite;
-        animation-delay: calc(var(--time) / -2);
-      }
-    }
-
   }
 
   section {
@@ -372,6 +336,7 @@ watch(totalQuantity, (newVal) => {
               align-items: center;
               gap: 1em;
               justify-content: center;
+              user-select: none;
 
               &>button {
                 padding: .5em .8em;
@@ -398,49 +363,12 @@ watch(totalQuantity, (newVal) => {
         }
 
       }
-      &>div{
-        &>div.ordered{
-          background:  var(--black-2);
-          border-radius: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          vertical-align: center;
-          height: 5em;
-          gap:20px;
-          width: 50em;
-          &>label{
-            display: block;
-          }
-          input[type="text"] {
-            padding: 0.5em;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1em;
-          }
-          input[type="submit"] {
-            padding: 0.7em;
-            border: none;
-            border-radius: 4px;
-            background: var(--orange);
-            color: var(--black);
-            font-size: 1em;
-            cursor: pointer;
-
-          }
-          input[type="submit"]:hover {
-            animation: changeColor 1s infinite;
-          }
-        }
-      }
-
-
     }
 
 
 
     &>div.telegram{
-      margin-top: 100px;
+      margin-top: 2em;
       display: flex;
       flex-direction: column;
       text-align: center;
@@ -454,11 +382,15 @@ watch(totalQuantity, (newVal) => {
 
       &>span{
         background-color: var(--orange);
-        color: var(--black);
         width: fit-content;
         border-radius: 0.3em;
         padding: 5px  20px  5px  20px;
         cursor: pointer;
+
+        &>a {
+          color: var(--black);
+          text-decoration: none;
+        }
       }
 
     }
@@ -469,11 +401,53 @@ watch(totalQuantity, (newVal) => {
       }
   }
 
+  button.commander {
+    display: block;
+    width: fit-content;
+    color: var(--black);
+    font-size: 1.4em;
+    background-color: var(--orange);
+    border-radius: 0.3em;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    margin: auto;
+  }
+
+  article.chiche {
+    margin: 2em 0;
+    text-align: center;
+
+    &>h2 {
+      font-family: "poppins-bold", sans-serif;
+    }
+
+    &>p {
+      margin-bottom: 1em;
+    }
+
+    &>img {
+      border-radius: 10px;
+
+      width: 35em;
+      height: 25em;
+      object-fit: cover;
+      display: block;
+      margin: auto;
+    }
+  }
+
   /* RESPONSIVE */
   @media screen and (max-width: 520px) {
     section>article.about-us>div>div {
       width: unset;
       padding: 0 1em;
+    }
+  }
+
+  @media screen and (max-width: 563px) {
+    article.chiche>img {
+      width: 100%;
     }
   }
 

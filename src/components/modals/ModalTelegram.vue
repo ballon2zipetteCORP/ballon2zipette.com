@@ -1,5 +1,5 @@
 <template>
-  <modal-default @close="setAsJoined" :modal-shown="showModal">
+  <modal-default @close="setAsJoined" :modal-shown="showTelegramModal">
     <div class="content">
       <h2>Rejoins le télégram maintenant</h2>
       <h4>Si tu ne rejoins pas samos viendra dans tes rêves.</h4>
@@ -8,8 +8,8 @@
       <a target="_blank" href="https://t.me/+ZSKuml6mYhNmZTU0">Ou via le lien</a>
 
       <footer>
-        <button @click="setAsJoined" class="primary">J'ai rejoint là encule</button>
-        <button @click="setAsJoined">J'ai déjà rejoint</button>
+        <button @click="setAsJoined" class="primary">J'ai rejoint là</button>
+        <button @click="setAsJoined">Je suis déjà dessus</button>
       </footer>
     </div>
   </modal-default>
@@ -17,19 +17,13 @@
 
 <script setup>
 import ModalDefault from '@/components/ui/ModalDefault.vue'
+import { ref } from 'vue'
 
-defineProps({
-  showModal: {
-    type: Boolean,
-    required: true
-  }
-});
-
-const emit = defineEmits(["close"]);
+const showTelegramModal = ref(localStorage.getItem("telegram_joined") !== "true");
 
 function setAsJoined() {
   localStorage.setItem("telegram_joined", "true");
-  emit("close");
+  showTelegramModal.value = false;
 }
 </script>
 
