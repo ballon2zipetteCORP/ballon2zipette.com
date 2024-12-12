@@ -162,31 +162,19 @@ onMounted(() => {
     75% { background-color: var(--red); }
     100% { background-color:var(--blue); }
   }
+  @keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
 
-  @keyframes scrolling-text {
-    to { transform: translateX(-100%); }
-  }
+    100% {
+        transform: translateX(-100%);
+    }
+}
 
-  div[role="banner"] {
-    background-color: var(--orange);
-    padding: .5em 0;
-    font-size: 30px;
-    overflow: hidden;
 
-    &>div.content {
-      display: flex;
-      gap: .5em;
-      align-items: center;
-      overflow: hidden;
-
-      &>* {
-        white-space: nowrap;
-
-        display: flex;
-        gap: .5em;
-        flex-shrink: 0;
-        align-items: center;
-
+@keyframes scroll2 {
+    0% {
         transform: translateX(0);
         animation: scrolling-text 4s linear infinite;
       }
@@ -211,6 +199,38 @@ onMounted(() => {
     &>h1 {
       font-family: "poppins-bold", sans-serif;
     }
+  }
+
+  div[role="banner"] {
+    background-color: var(--orange);
+    padding: 1em .8em;
+    gap : 0px;
+    font-size: 30px;
+    overflow: hidden;
+    &>div.content{
+      overflow: hidden;
+      width: max-content;
+      display: flex;
+      gap:20px;
+      &>div{
+        min-width: 200px;
+        animation: scroll var(--time) linear infinite;
+        animation-delay: calc(var(--time) * -1);
+
+        white-space: nowrap;
+        &>span{
+          overflow: hidden;
+          white-space: nowrap;
+          color : var(--black);
+        }
+      }
+
+      &>div:nth-child(2){
+        animation: scroll2 var(--time) linear infinite;
+        animation-delay: calc(var(--time) / -2);
+      }
+    }
+
   }
 
   section {
