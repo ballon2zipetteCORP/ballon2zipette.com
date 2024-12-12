@@ -230,6 +230,7 @@ onMounted(() => {
     }
 
   }
+
   section {
     &>article.about-us {
       display: flex;
