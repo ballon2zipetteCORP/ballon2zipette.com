@@ -1,7 +1,7 @@
 <template>
   <footer>
     <span>&copy; Ballon2Zipette {{ new Date().getFullYear() }} | 11 rue des cramptés, 101214 Bureau</span>
-    <span class="warning">Ce site n'a pas pour objet de faire promotion de la drogue.</span>
+    <span class="warning">Ce site n'a pas pour objet de faire la promotion de la drogue.</span>
   </footer>
 </template>
 
