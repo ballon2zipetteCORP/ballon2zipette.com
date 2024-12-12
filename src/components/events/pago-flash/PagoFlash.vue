@@ -180,7 +180,7 @@ onMounted(() => {
       }
     }
 
-  }
+
 
   div.hero-header {
     margin: auto;
