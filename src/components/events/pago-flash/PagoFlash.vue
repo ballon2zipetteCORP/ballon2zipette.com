@@ -432,7 +432,7 @@ onMounted(() => {
       border-radius: 10px;
 
       width: 35em;
-      height: 25em;
+      height: 100%;
       object-fit: cover;
       display: block;
       margin: auto;
