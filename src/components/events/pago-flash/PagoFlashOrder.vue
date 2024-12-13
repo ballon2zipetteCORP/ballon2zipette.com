@@ -20,9 +20,13 @@
         <label class="required" for="family-name">Nom</label>
         <input type="text" id="family-name" v-model="familyName">
       </div>
+      <div class="form-field">
+        <label class="required" for="command-text">Commentaire</label>
+        <textarea id="command-text" v-model="commentText"></textarea>
+      </div>
 
-      <button :disabled="isDisabled">
-        Je commande
+      <button @click="sendCommand" :disabled="isDisabled">
+        {{ buttonLabel }}
       </button>
     </div>
   </modal-default>
@@ -32,10 +36,11 @@
 import { computed, ref } from 'vue'
 
 import ModalDefault from '@/components/ui/ModalDefault.vue'
+import emailjs from '@emailjs/browser';
 
 const emit = defineEmits(["close"]);
 
-defineProps({
+const props = defineProps({
   showModal: {
     type: Boolean,
     required: true
@@ -48,10 +53,49 @@ defineProps({
 
 const givenName = ref("");
 const familyName = ref("");
+const commentText = ref("");
+const isSending = ref(false);
 
-const isDisabled = computed(() =>
-  !givenName.value.trim() || !familyName.value.trim()
+const isDisabled = computed(() => {
+  return !givenName.value.trim() || !familyName.value.trim() || isSending.value;
+}
 );
+
+const buttonLabel = computed(() => {
+  return isSending.value ? "Envoi en cours..." : "Je commande";
+});
+
+const commandText = computed(() => props.data.map(item => item.title + " x" + item.quantity).join("\n"));
+
+emailjs.init("VRcmXpRSmU6Ge9i1M");
+
+const sendCommand = () => {
+    const serviceID = 'service_rro8bfb';
+    const templateID = 'template_8zsu4e8';
+
+    const templateParams = {
+      name: givenName.value,
+      familyName: familyName.value,
+      commentText: commentText.value,
+      command: commandText.value
+    }
+
+    isSending.value = true;
+    emailjs.send(serviceID, templateID, templateParams)
+    .then(() => {
+        alert('Commande envoyé !');
+        givenName.value = "";
+        familyName.value = "";
+        commentText.value = "";
+        emit("close", { done: true });
+    }).catch((err) => {
+        alert(JSON.stringify(err));
+    })
+    .finally(() => {
+      isSending.value = false;
+    });
+}
+
 </script>
 
 <style scoped>
@@ -100,6 +144,17 @@ ul {
 
 div.form-field {
   margin: .5em 0;
+  &>textarea {
+    background-color: var(--black-2);
+    border: 1px solid var(--gray-1);
+    color: white;
+    padding: .7em 1em;
+    border-radius: 10px;
+    font-family: "poppins-regular", sans-serif;
+    width: 100%;
+    resize: none;
+    height: 6rem; 
+  }
 }
 
 button {

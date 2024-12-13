@@ -142,7 +142,11 @@ const customerOrder = computed(() =>
 function order() {
   orderModal.value = true;
 }
-function closeOrderModal() {
+
+function closeOrderModal({ done = false } = {}) {
+  if (done) {
+    offers.value.forEach(offer => (offer.quantity = 0));
+  }
   orderModal.value = false;
 }
 
