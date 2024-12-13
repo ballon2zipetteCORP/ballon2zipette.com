@@ -60,7 +60,7 @@
             <div class="quantity-selector">
               <button @click="offer.quantity > 0 && offer.quantity--" :disabled="offer.quantity < 1">-</button>
               <span>{{ offer.quantity }}</span>
-              <button @click="offer.quantity++">+</button>
+              <button @click="totalQuantity <= MAX_QUANTITY && offer.quantity++" :disabled="totalQuantity >= MAX_QUANTITY">+</button>
             </div>
           </footer>
         </article>
@@ -99,6 +99,8 @@ import { ref, onMounted, computed } from 'vue'
 
 import PagoFlashOrder from '@/components/events/pago-flash/PagoFlashOrder.vue'
 
+const MAX_QUANTITY = ref(28); // c vraiment la hess
+
 // offers
 const offers = ref([
   {
@@ -134,7 +136,7 @@ const totalQuantity = computed(() =>
 // customer's order
 const orderModal = ref(false);
 
-// get at least all items that gets one of quantity
+// get at least all items that get one of quantity
 const customerOrder = computed(() =>
   offers.value.filter(({ quantity }) => quantity > 0)
 );
@@ -153,7 +155,7 @@ function closeOrderModal({ done = false } = {}) {
 /** ORDER GESTION **/
 
 onMounted(() => {
-  document.title = "Pago-flash éphémère | Ballon22ipette.com";
+  document.title = "Pago-flash éphémère | Ballon2Zipette.com";
 });
 </script>
 
