@@ -5,7 +5,7 @@
       <ul>
         <li v-for="item of data" :key="item.title">
           <div>
-            <img :src="'images/pago-flash/thumbnails/'+item.thumbnail+'.png'" :alt="item.title" />
+            <img :src="'images/events/pago-flash/thumbnails/'+item.thumbnail+'.png'" :alt="item.title" />
             <h4>{{ item.title }}</h4>
           </div>
           <h5>Quantité: {{ item.quantity }}</h5>
@@ -153,7 +153,7 @@ div.form-field {
     font-family: "poppins-regular", sans-serif;
     width: 100%;
     resize: none;
-    height: 6rem; 
+    height: 6rem;
   }
 }
 

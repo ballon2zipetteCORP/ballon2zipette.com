@@ -1,9 +1,9 @@
 import { onMounted, ref } from 'vue'
 
-const API_KEY = "675c7d072b50bcbf9e0308ca";
+const PUBLIC_API_KEY = "675c7d072b50bcbf9e0308ca";
 const ENDPOINT = "https://ballon2zipette-d14f.restdb.io/rest/items";
 
-export function useItems() {
+export function useItemsRetriever() {
 
   const response = ref(null);
   const errorMessage = ref(null);
@@ -14,7 +14,7 @@ export function useItems() {
       const res = await fetch(ENDPOINT, {
         method: "GET",
         headers: {
-          'x-apikey': API_KEY
+          'x-apikey': PUBLIC_API_KEY
         }
       });
       if(!res.ok) {

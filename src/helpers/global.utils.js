@@ -8,6 +8,11 @@ function triggerWhenParentFound(elementSrc, targetElement, cb) {
     return cb(false, parent);
 }
 
+function defineTitle(title) {
+  document.title = `${title} | Ballon2Zipette.com`;
+}
+
 export {
-  triggerWhenParentFound
+  triggerWhenParentFound,
+  defineTitle
 }
