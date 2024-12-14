@@ -99,7 +99,7 @@ import { defineTitle } from '@/helpers/global.utils.js'
 
 import PagoFlashOrder from '@/components/events/pago-flash/PagoFlashOrder.vue'
 
-const MAX_QUANTITY = ref(28); // c vraiment la hess
+const MAX_QUANTITY = ref(4); // c vraiment la hess
 
 // offers
 const offers = ref([
