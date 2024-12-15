@@ -35,6 +35,7 @@ h2 {
 
 section {
   display: flex;
+  flex-wrap: wrap;
   gap: 2em;
   justify-content: center;
 }
