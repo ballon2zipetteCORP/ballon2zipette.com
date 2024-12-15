@@ -2,7 +2,7 @@
   <footer>
     <div class="telegram">
       <h2>Rejoins le télégram maintenant</h2>
-      <h4>Si tu ne rejoins pas samos viendra dans tes rêves.</h4>
+      <h4>On ramène une équipe sinon.</h4>
 
       <img src="/images/telegram-link.jpeg" alt="telegram link" />
       <span><a target="_blank" href="https://t.me/+ZSKuml6mYhNmZTU0">Ou via le lien</a></span>
@@ -59,7 +59,7 @@ footer {
   &>span.warning {
     color: var(--orange);
     border-bottom: 1px solid var(--orange);
-    padding-bottom: .5em;
+    padding-bottom: .2em;
     width: fit-content;
     margin: auto;
   }

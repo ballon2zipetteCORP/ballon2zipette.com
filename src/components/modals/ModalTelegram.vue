@@ -2,7 +2,7 @@
   <modal-default @close="setAsJoined" :modal-shown="showTelegramModal">
     <div class="content">
       <h2>Rejoins le télégram maintenant</h2>
-      <h4>Si tu ne rejoins pas samos viendra dans tes rêves.</h4>
+      <h4>On ramène une équipe sinon.</h4>
 
       <img src="/images/telegram-link.jpeg" alt="telegram link" />
       <a target="_blank" href="https://t.me/+ZSKuml6mYhNmZTU0">Ou via le lien</a>

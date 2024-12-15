@@ -88,6 +88,12 @@
         <img src="/images/events/pago-flash/msn.jpg" alt="msn" />
       </article>
     </article>
+
+    <!--<article>
+      <h2>La fabriquation...</h2>
+
+      <img alt="" src="" />
+    </article>-->
   </section>
 
   <pago-flash-order :show-modal="orderModal" @close="closeOrderModal" :data="customerOrder" />
