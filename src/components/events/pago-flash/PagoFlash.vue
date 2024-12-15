@@ -86,9 +86,10 @@
           Restez brancher on vous prépare encore d'autre évènement 🌍
         </p>
         <img src="/images/events/pago-flash/msn.jpg" alt="msn" />
+
       </article>
     </article>
-
+    <div class = "rule"><h1>Merci de ramenez les bouteilles vides auprès de nos fournisseurs SVP</h1></div>
     <!--<article>
       <h2>La fabriquation...</h2>
 
@@ -370,6 +371,7 @@ article.chiche {
   margin: 2em 0;
   text-align: center;
 
+
   & > h2 {
     font-family: 'poppins-bold', sans-serif;
   }
@@ -387,8 +389,15 @@ article.chiche {
     display: block;
     margin: auto;
   }
-}
 
+}
+div.rule{
+    text-align: center;
+    margin-top: 25px;
+    width: 100%;
+    font-size: 20px;
+    color: var(--orange);
+  }
 /* RESPONSIVE */
 @media screen and (max-width: 520px) {
   section > article.about-us > div > div {
