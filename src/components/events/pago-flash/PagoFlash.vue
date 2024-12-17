@@ -32,7 +32,7 @@
       <h2>Nos fournisseurs</h2>
 
       <ul>
-        <li>
+        <li style="filter: blur(0.5);">
           <img src="/images/events/pago-flash/partenaires/ballon2zipette.jpg" alt="ballon2zipette" />
         </li>
         <li>
