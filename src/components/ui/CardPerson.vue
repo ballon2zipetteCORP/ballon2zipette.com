@@ -1,7 +1,11 @@
 <template>
   <article ref="articleRef">
-    <span class="boycotted" v-if="boycottRate > 0">
-      Boycotté 🙅‍♂️
+    <span @mouseenter="showBoycottReason = true" @mouseleave="showBoycottReason = false" class="boycotted" v-if="boycottRate > 0">
+        <span class="boycott-reason" v-if="showBoycottReason">
+          {{ boycottReason }}
+        </span>
+
+      {{ "Boycotté 🙅‍" }}
     </span>
     <img
       :style="{filter: `blur(${boycottRate}px)`}"
@@ -36,6 +40,11 @@ defineProps({
     type: String,
     required: false
   },
+  boycottReason: {
+    type: String,
+    required: false,
+    default: "Aucune en vrai"
+  },
   boycottRate: {
     type: Number,
     required: false,
@@ -44,6 +53,7 @@ defineProps({
 });
 
 const articleRef = ref();
+const showBoycottReason = ref(false);
 
 watch(articleRef, (article) => {
   const video = article.querySelector('video');
@@ -90,10 +100,26 @@ article {
     left: 0;
   }
 
+  &>span.boycotted>span.boycott-reason {
+    position: absolute;
+    top: -2.5em;
+    left: 50%;
+
+    background-color: rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    padding: .5em .8em;
+    width: 10em;
+
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
   &>span.boycotted {
     position: absolute;
     top: 50%;
     left: 50%;
+
+    text-align: center;
 
     z-index: 2;
     background-color: var(--red);

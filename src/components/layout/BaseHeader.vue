@@ -13,14 +13,16 @@
           </router-link>
         </li>
         <li>
-          Nos évènements
-          <ul>
+          <router-link :to="{name: 'events'}">
+            Nos évènements
+          </router-link>
+          <!--<ul>
             <li>
               <router-link :to="{name: 'home'}">
                 Pago-flash
               </router-link>
             </li>
-          </ul>
+          </ul>-->
         </li>
       </ul>
     </nav>
