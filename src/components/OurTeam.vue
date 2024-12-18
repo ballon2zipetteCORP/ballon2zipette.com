@@ -1,9 +1,19 @@
 <template>
   <h2>Notre équipe</h2>
 
-  <section v-for="teams in Object.values(teamsMembers)" :key="teams">
+  <section v-for="teams in Object.values(teamsMembers)" :key="teams" class="team">
     <card-person
       v-for="team in teams" :key="team"
+      :post="team.post"
+      :avatar="team.thumbnail"
+      :video="team.video"
+      :boycott-rate="team.boycottRate"
+    />
+  </section>
+  <h2>Nos Calibres</h2>
+  <section v-for="teams in Object.values(calibres)" :key="teams" class = "guns">
+    <card-calibre
+      v-for="team in calibres" :key="team"
       :post="team.post"
       :avatar="team.thumbnail"
       :video="team.video"
@@ -28,7 +38,7 @@ const OUR_TEAM = ref([
 ]);
 
 const OUR_GUNS = ref([
-
+  { thumbnail: "gun.jpeg", post: "SMALL", video: "planBraquage.mov" }
 ]);
 
 const teamsMembers = computed(() => {
@@ -40,6 +50,15 @@ const teamsMembers = computed(() => {
   }, {});
 });
 
+
+const calibres = computed(() => {
+  return OUR_GUNS.value.reduce((res, team) => {
+    if(!res[team.post])
+      res[team.post] = [];
+    res[team.post].push(team);
+    return res;
+  }, {});
+});
 onMounted(() => {
   defineTitle("Notre équipe");
 });
@@ -52,7 +71,7 @@ h2 {
   margin-bottom: 2em;
 }
 
-section {
+section.team {
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
