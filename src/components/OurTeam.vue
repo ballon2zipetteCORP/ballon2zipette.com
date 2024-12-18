@@ -1,25 +1,40 @@
 <template>
   <h2>Notre équipe</h2>
 
-  <section>
-    <article v-for="team in OUR_TEAM" :key="team.title">
-      <img :alt="team.title" :src="'/images/our-team/'+team.thumbnail" />
-      <h4>{{ team.title }}</h4>
-      <h5>{{ team.post }}</h5>
-    </article>
+  <section v-for="teams in Object.values(teamsMembers)" :key="teams">
+    <card-person
+      v-for="team in teams" :key="team"
+      :post="team.post"
+      :avatar="team.thumbnail"
+      :video="team.video"
+      :boycott-rate="team.boycottRate"
+    />
   </section>
 </template>
 
 <script setup>
 
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { defineTitle } from '@/helpers/global.utils.js'
+import CardPerson from '@/components/ui/CardPerson.vue'
 
 const OUR_TEAM = ref([
-  { title: "Ballon2Zipette ❄️🔪", thumbnail: "ballon2zipette.jpg", post: "CEO", video: "ballon2zipette.mov" },
-  { title: "MomoPlanSnap 👻", thumbnail: "momoplansnap.jpg", post: "CEO" },
-  { title: "Plan Braquage 💰", thumbnail: "planBraquageMechant.jpg", post: "CEO", video: "planBraquage.mov" }
+  { thumbnail: "ballon2zipette.jpg", post: "CEO", video: "ballon2zipette.mov" },
+  { thumbnail: "momoplansnap.jpg", post: "CEO" },
+  { boycottRate: 2, thumbnail: "planBraquageMechant.jpg", post: "CEO", video: "planBraquage.mov" },
+  { thumbnail: "panoramix.jpg", post: "Associé" },
+  { thumbnail: "nourisse.jpg", post: "Associé" },
+  { thumbnail: "panorapetite.jpg", post: "Associé" }
 ]);
+
+const teamsMembers = computed(() => {
+  return OUR_TEAM.value.reduce((res, team) => {
+    if(!res[team.post])
+      res[team.post] = [];
+    res[team.post].push(team);
+    return res;
+  }, {});
+});
 
 onMounted(() => {
   defineTitle("Notre équipe");
@@ -38,37 +53,6 @@ section {
   flex-wrap: wrap;
   gap: 2em;
   justify-content: center;
-}
-
-article {
-  position: relative;
-
-  &>img {
-    width: 15em;
-    border-radius: 10px;
-  }
-
-  &>h4 {
-    margin-top: .5em;
-    text-align: center;
-  }
-
-  &>h5 {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    background-color: var(--orange);
-    color: var(--black);
-    width: fit-content;
-    margin: auto;
-    margin-top: .5em;
-    padding: .5em .8em;
-
-    border-radius: 100px;
-    font-family: "poppins-bold", sans-serif;
-  }
+  margin-bottom: 3em;
 }
 </style>
