@@ -50,7 +50,7 @@ watch(articleRef, (article) => {
   if(!video)
     return;
   article.onclick = () => {
-    video.muted = false;
+    video.muted = !video.muted;
   }
   article.onmouseenter = () => {
     video.play();
