@@ -27,6 +27,10 @@ const OUR_TEAM = ref([
   { thumbnail: "panorapetite.jpg", post: "Associé.e" }
 ]);
 
+const OUR_GUNS = ref([
+
+]);
+
 const teamsMembers = computed(() => {
   return OUR_TEAM.value.reduce((res, team) => {
     if(!res[team.post])
