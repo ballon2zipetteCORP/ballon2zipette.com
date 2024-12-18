@@ -1,7 +1,7 @@
 <template>
   <article ref="articleRef">
-    <span @mouseenter="showBoycottReason = true" @mouseleave="showBoycottReason = false" class="boycotted" v-if="boycottRate > 0">
-        <span class="boycott-reason" v-if="showBoycottReason">
+    <span class="boycotted" v-if="boycottRate > 0">
+        <span class="boycott-reason">
           {{ boycottReason }}
         </span>
 
@@ -115,6 +115,10 @@ article {
   }
 
   &>span.boycotted {
+    &:hover>span.boycott-reason {
+        display: block;
+    }
+
     position: absolute;
     top: 50%;
     left: 50%;
