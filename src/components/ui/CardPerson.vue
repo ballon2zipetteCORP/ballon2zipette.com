@@ -104,6 +104,7 @@ article {
     top: -2.5em;
     left: 50%;
 
+    display: none;
     background-color: rgba(0, 0, 0, .8);
     border-radius: 10px;
     padding: .5em .8em;
