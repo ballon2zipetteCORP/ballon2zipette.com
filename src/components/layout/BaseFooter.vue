@@ -10,7 +10,7 @@
 
     <span>Contact : assiasamosbraquageforsure@ballon2zipette.com</span>
     <span>&copy; Ballon2Zipette {{ new Date().getFullYear() }} | 11 rue des cramptés, 101214 Bureau | <a target="_blank" href="https://github.com/Matteo0810/ballon2zipette.com">Code source</a></span>
-    <span class="warning">Ce site n'a pas pour objet de faire la promotion de la drogue.</span>
+    <span class="warning">Ce site n'a pas pour but de faire la promotion de drogue ou d'armes.</span>
   </footer>
 </template>
 
