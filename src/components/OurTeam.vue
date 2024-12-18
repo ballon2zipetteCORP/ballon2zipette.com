@@ -38,7 +38,7 @@ const OUR_TEAM = ref([
 ]);
 
 const OUR_GUNS = ref([
-  { path: "gun.jpeg", title: "GLOCK 18 - 9mm edition collab avec Drake", post : "small" }
+  { path: "gun.jpeg", title: "GLOCK 18 - 9mm edition collab Drake", post : "small" }
 ]);
 
 const teamsMembers = computed(() => {
