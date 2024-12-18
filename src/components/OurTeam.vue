@@ -22,9 +22,9 @@ const OUR_TEAM = ref([
   { thumbnail: "ballon2zipette.jpg", post: "CEO", video: "ballon2zipette.mov" },
   { thumbnail: "momoplansnap.jpg", post: "CEO" },
   { boycottRate: 2, thumbnail: "planBraquageMechant.jpg", post: "CEO", video: "planBraquage.mov" },
-  { thumbnail: "panoramix.jpg", post: "Associé" },
-  { thumbnail: "nourisse.jpg", post: "Associé" },
-  { thumbnail: "panorapetite.jpg", post: "Associé" }
+  { thumbnail: "panoramix.jpg", post: "Associé.e" },
+  { thumbnail: "nourisse.jpg", post: "Associé.e" },
+  { thumbnail: "panorapetite.jpg", post: "Associé.e" }
 ]);
 
 const teamsMembers = computed(() => {
