@@ -3,7 +3,7 @@
     <div class="content">
       <h2>️️⚠ Avertissement ⚠</h2>
       <p>
-        Ce site a été créé à but humoristique. Il n'a aucunement pour but de faire la promotion de la drogue ou quoi que ce soit d'autre (Cela inclut aussi le télégramme).
+        Ce site a été créé à but humoristique. Il n'a aucunement pour but de faire la promotion de la drogue, arme ou quoi que ce soit d'autre (Cela inclut aussi le télégramme).
       </p>
 
       <button @click="setAsAdvertised" class="primary">
