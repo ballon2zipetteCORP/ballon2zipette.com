@@ -12,13 +12,11 @@
     />
   </section>
   <h2>Nos Calibres</h2>
-  <section v-for="teams in Object.values(calibres)" :key="teams" class = "guns">
+  <section v-for="calibre in Object.values(calibres)" :key="calibre" class = "guns">
     <card-calibre
-      v-for="team in calibres" :key="team"
-      :post="team.post"
-      :avatar="team.thumbnail"
-      :video="team.video"
-      :boycott-rate="team.boycottRate"
+      v-for="calibre in calibres" :key="calibre"
+      :post="calibre.post"
+      :avatar="calibre.thumbnail"
     />
   </section>
 </template>
@@ -39,7 +37,7 @@ const OUR_TEAM = ref([
 ]);
 
 const OUR_GUNS = ref([
-  { thumbnail: "gun.jpeg", post: "SMALL", video: "planBraquage.mov" }
+  { thumbnail: "gun.jpeg", post: "SMALL" }
 ]);
 
 const teamsMembers = computed(() => {
@@ -53,10 +51,10 @@ const teamsMembers = computed(() => {
 
 
 const calibres = computed(() => {
-  return OUR_GUNS.value.reduce((res, team) => {
-    if(!res[team.post])
-      res[team.post] = [];
-    res[team.post].push(team);
+  return OUR_GUNS.value.reduce((res, calibre) => {
+    if(!res[calibre.post])
+      res[calibre.post] = [];
+    res[calibre.post].push(calibre);
     return res;
   }, {});
 });
