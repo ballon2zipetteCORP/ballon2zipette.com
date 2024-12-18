@@ -10,7 +10,7 @@
     <img
       :style="{filter: `blur(${boycottRate}px)`}"
       :alt="avatar"
-      :src="'/images/our-team/'+avatar"
+      :src="avatar"
     />
     <video
       v-if="video"
@@ -53,7 +53,6 @@ defineProps({
 });
 
 const articleRef = ref();
-const showBoycottReason = ref(false);
 
 watch(articleRef, (article) => {
   const video = article.querySelector('video');

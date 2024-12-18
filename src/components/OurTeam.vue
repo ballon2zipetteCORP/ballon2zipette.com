@@ -1,33 +1,31 @@
 <template>
   <h2>Notre équipe</h2>
 
-  <section v-for="teams in Object.values(teamsMembers)" :key="teams" class="team">
+  <section v-for="teams in Object.values(teamsMembers)" :key="teams">
     <card-person
       v-for="team in teams" :key="team"
       :post="team.post"
-      :avatar="team.thumbnail"
+      :avatar="'/images/our-team/'+team.thumbnail"
       :video="team.video"
       :boycott-rate="team.boycottRate"
       :boycott-reason="team.boycottReason"
     />
   </section>
   <h2>Nos Calibres</h2>
-  <section v-for="teams in Object.values(calibres)" :key="teams" class = "guns">
+  <section>
     <card-calibre
-      v-for="team in calibres" :key="team"
-      :post="team.post"
-      :avatar="team.thumbnail"
-      :video="team.video"
-      :boycott-rate="team.boycottRate"
+      v-for="gun in OUR_GUNS" :key="gun"
+      :path="'/images/calibres/'+gun.path"
+      :title="gun.title"
     />
   </section>
 </template>
 
 <script setup>
-
 import { computed, onMounted, ref } from 'vue'
 import { defineTitle } from '@/helpers/global.utils.js'
 import CardPerson from '@/components/ui/CardPerson.vue'
+import CardCalibre from '@/components/ui/CardCalibre.vue'
 
 const OUR_TEAM = ref([
   { thumbnail: "ballon2zipette.jpg", post: "CEO", video: "ballon2zipette.mov" },
@@ -39,7 +37,7 @@ const OUR_TEAM = ref([
 ]);
 
 const OUR_GUNS = ref([
-  { thumbnail: "gun.jpeg", post: "SMALL", video: "planBraquage.mov" }
+  { path: "gun.jpeg", title: "9mm small edition collab avec Drake" }
 ]);
 
 const teamsMembers = computed(() => {
@@ -51,15 +49,6 @@ const teamsMembers = computed(() => {
   }, {});
 });
 
-
-const calibres = computed(() => {
-  return OUR_GUNS.value.reduce((res, team) => {
-    if(!res[team.post])
-      res[team.post] = [];
-    res[team.post].push(team);
-    return res;
-  }, {});
-});
 onMounted(() => {
   defineTitle("Notre équipe");
 });
@@ -72,7 +61,7 @@ h2 {
   margin-bottom: 2em;
 }
 
-section.team {
+section {
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
