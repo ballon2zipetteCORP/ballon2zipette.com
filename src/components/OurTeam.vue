@@ -17,6 +17,7 @@
       v-for="gun in OUR_GUNS" :key="gun"
       :path="'/images/calibres/'+gun.path"
       :title="gun.title"
+      :post="gun.post"
     />
   </section>
 </template>
@@ -37,7 +38,7 @@ const OUR_TEAM = ref([
 ]);
 
 const OUR_GUNS = ref([
-  { path: "gun.jpeg", title: "9mm small edition collab avec Drake" }
+  { path: "gun.jpeg", title: "9mm small edition collab avec Drake", post : "small" }
 ]);
 
 const teamsMembers = computed(() => {

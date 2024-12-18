@@ -20,11 +20,17 @@ defineProps({
 </script>
 
 <style scoped>
+section{
+  display: flex;
+  justify-content: center;
+}
 article {
   position: relative;
 
   &>img {
     width: 15em;
+    border-radius: 20px;
+
   }
 }
 </style>
