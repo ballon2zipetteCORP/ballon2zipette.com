@@ -12,6 +12,7 @@
       :alt="avatar"
       :src="avatar"
     />
+    <span v-if="video" class="icon" :class="isVideoMuted ? 'muted' : 'volume'"></span>
     <video
       v-if="video"
       :style="{filter: `blur(${boycottRate}px)`}"
@@ -54,12 +55,15 @@ defineProps({
 
 const articleRef = ref();
 
+const isVideoMuted = ref(true);
+
 watch(articleRef, (article) => {
   const video = article.querySelector('video');
   if(!video)
     return;
   article.onclick = () => {
     video.muted = !video.muted;
+    isVideoMuted.value = !isVideoMuted.value;
   }
   article.onmouseenter = () => {
     video.play();
@@ -72,13 +76,41 @@ watch(articleRef, (article) => {
 </script>
 
 <style scoped>
+.icon {
+    opacity: 0;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 100;
+    width: 42px;
+    height: 42px;
+    padding: 0.2em;
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before {
+      font-size: 2.5em;
+  }
+  &.muted::before {
+    content: "\F075F";
+  }
+
+  &.volume::before {
+    content: "\F057E";
+  }
+}
+
+
+
 article {
   position: relative;
 
   &:has(video):hover img {
     opacity: 0;
   }
-  &:has(video):hover video {
+  &:has(video):hover video, &:has(video):hover span {
     opacity: 1;
   }
 

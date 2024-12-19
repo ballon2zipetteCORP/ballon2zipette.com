@@ -15,6 +15,15 @@
   src: url('./fonts/poppins-semibold.ttf');
 }
 
+@font-face {
+  font-family: 'mdi';
+  src: url('/node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf');
+}
+
+.icon {
+  font-family: "mdi";
+}
+
 *, *::before, *::after {
   outline: none;
   padding: 0;
