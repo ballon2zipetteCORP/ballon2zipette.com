@@ -5,7 +5,7 @@
       <ul>
         <li v-for="item of data" :key="item.title">
           <div>
-            <img :src="'images/events/pago-flash/thumbnails/'+item.thumbnail+'.png'" :alt="item.title" />
+            <img :src="'images/events/list/thumbnails/'+item.thumbnail+'.png'" :alt="item.title" />
             <h4>{{ item.title }}</h4>
           </div>
           <h5>Quantité: {{ item.quantity }}</h5>
@@ -25,22 +25,25 @@
         <textarea id="command-text" v-model="commentText"></textarea>
       </div>
 
-      <button @click="sendCommand" :disabled="isDisabled">
+      <button @click="handleSend" :disabled="isDisabled">
         {{ buttonLabel }}
       </button>
     </div>
   </modal-default>
+
+  <products-order-completed />
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
+import ProductsOrderCompleted from '@/components/order/ProductsOrderCompleted.vue'
 import ModalDefault from '@/components/ui/ModalDefault.vue'
-import emailjs from '@emailjs/browser';
+
+import useEmailSend from '@/composables/useEmailSend.js'
 
 const emit = defineEmits(["close"]);
-
-const props = defineProps({
+defineProps({
   showModal: {
     type: Boolean,
     required: true
@@ -54,48 +57,22 @@ const props = defineProps({
 const givenName = ref("");
 const familyName = ref("");
 const commentText = ref("");
-const isSending = ref(false);
 
-const isDisabled = computed(() => {
-  return !givenName.value.trim() || !familyName.value.trim() || isSending.value;
-}
+const {isLoading, handleSend, isSent} = useEmailSend();
+
+const isDisabled = computed(() =>
+  !givenName.value.trim() || !familyName.value.trim() || isLoading.value
 );
 
-const buttonLabel = computed(() => {
-  return isSending.value ? "Envoi en cours..." : "Je commande";
-});
+const buttonLabel = computed(() =>
+  isLoading.value ? "Envoi en cours..." : "Je commande"
+);
 
-const commandText = computed(() => props.data.map(item => item.title + " x" + item.quantity).join("\n"));
-
-emailjs.init("VRcmXpRSmU6Ge9i1M");
-
-const sendCommand = () => {
-    const serviceID = 'service_rro8bfb';
-    const templateID = 'template_8zsu4e8';
-
-    const templateParams = {
-      name: givenName.value,
-      familyName: familyName.value,
-      commentText: commentText.value,
-      command: commandText.value
-    }
-
-    isSending.value = true;
-    emailjs.send(serviceID, templateID, templateParams)
-    .then(() => {
-        alert('Commande envoyé !');
-        givenName.value = "";
-        familyName.value = "";
-        commentText.value = "";
-        emit("close", { done: true });
-    }).catch((err) => {
-        alert(JSON.stringify(err));
-    })
-    .finally(() => {
-      isSending.value = false;
-    });
-}
-
+watch(isSent, (newVal) => {
+  if(newVal === true) {
+    emit('close');
+  }
+})
 </script>
 
 <style scoped>

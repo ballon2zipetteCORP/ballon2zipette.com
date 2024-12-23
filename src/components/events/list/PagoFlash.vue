@@ -51,7 +51,7 @@
         <article v-for="offer in offers" :key="offer">
           <h4 v-if="offer.popular">Populaire</h4>
           <img
-            :src="'images/events/pago-flash/thumbnails/' + offer.thumbnail + '.png'"
+            :src="'images/events/list/thumbnails/' + offer.thumbnail + '.png'"
             :alt="offer.title"
           />
           <h3>{{ offer.title }}</h3>
@@ -97,14 +97,14 @@
     </article>-->
   </section>
 
-  <pago-flash-order :show-modal="orderModal" @close="closeOrderModal" :data="customerOrder" />
+  <products-order :show-modal="orderModal" @close="closeOrderModal" :data="customerOrder" />
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { defineTitle } from '@/helpers/global.utils.js'
 
-import PagoFlashOrder from '@/components/events/pago-flash/PagoFlashOrder.vue'
+import ProductsOrder from '@/components/order/ProductsOrder.vue'
 
 const MAX_QUANTITY = ref(4); // c vraiment la hess
 

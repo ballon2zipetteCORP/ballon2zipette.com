@@ -1,6 +1,6 @@
 <template>
   <article>
-    <img :alt="title" :src="path" />
+    <img loading="lazy" :alt="title" :src="path" />
     <h5>{{ post }}</h5>
     <h6>{{ title }}</h6>
   </article>

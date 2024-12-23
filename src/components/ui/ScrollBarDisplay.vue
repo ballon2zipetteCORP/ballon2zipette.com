@@ -13,6 +13,11 @@ defineProps({
   message: {
     type: String,
     required: true
+  },
+  defilement: {
+    type: [Number, undefined],
+    required: false,
+    default: 4 // in s
   }
 });
 </script>
@@ -46,6 +51,7 @@ div[role='banner'] {
       align-items: center;
 
       transform: translateX(0);
+      /* ::v-bind(defilement) */
       animation: scrolling-text 4s linear infinite;
     }
   }
