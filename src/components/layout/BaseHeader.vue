@@ -4,7 +4,7 @@
       <ul>
         <li>
           <router-link :to="{name: 'home'}">
-            Accueil
+            À la une
           </router-link>
         </li>
         <li>
