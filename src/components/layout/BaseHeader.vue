@@ -12,17 +12,17 @@
             Notre équipe
           </router-link>
         </li>
-        <li>
+        <li class="events">
           <router-link :to="{name: 'events'}">
             Nos évènements
           </router-link>
-          <!--<ul>
+          <ul>
             <li>
               <router-link :to="{name: 'home'}">
                 Pago-flash
               </router-link>
             </li>
-          </ul>-->
+          </ul>
         </li>
       </ul>
     </nav>
@@ -56,6 +56,13 @@ nav>ul {
       display: block;
     }
 
+    &:hover > ul,
+    & > ul:hover {
+      display: block;
+    }
+
+
+
     &>ul {
       position: absolute;
       top: 1.8em;
@@ -85,5 +92,9 @@ nav>ul {
       }
     }
   }
+  &:hover > ul:hover, &:hover > ul:hover > li:hover {
+    display: block;
+  }
 }
+
 </style>
