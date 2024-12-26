@@ -16,4 +16,6 @@ COPY --from=tmp /app/dist /usr/share/nginx/html
 
 ENV NODE_ENV=production
 
+COPY nginx.conf /etc/nginx/nginx.conf
+
 CMD ["nginx", "-g", "daemon off;"]
