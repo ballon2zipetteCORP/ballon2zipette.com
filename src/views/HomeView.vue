@@ -1,7 +1,7 @@
 <template>
-  <pago-flash />
+  <waiting-screen />
 </template>
 
 <script setup>
-import PagoFlash from '@/components/events/list/PagoFlash.vue'
+import WaitingScreen from '@/components/WaitingScreen.vue'
 </script>

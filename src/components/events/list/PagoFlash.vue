@@ -51,7 +51,7 @@
         <article v-for="offer in offers" :key="offer">
           <h4 v-if="offer.popular">Populaire</h4>
           <img
-            :src="'images/events/list/thumbnails/' + offer.thumbnail + '.png'"
+            :src="'images/events/pago-flash/thumbnails/' + offer.thumbnail + '.png'"
             :alt="offer.title"
           />
           <h3>{{ offer.title }}</h3>
@@ -97,7 +97,7 @@
     </article>-->
   </section>
 
-  <products-order :show-modal="orderModal" @close="closeOrderModal" :data="customerOrder" />
+  <!--<products-order :show-modal="orderModal" @close="closeOrderModal" :data="customerOrder" />-->
 </template>
 
 <script setup>

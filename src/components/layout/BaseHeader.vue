@@ -3,26 +3,26 @@
     <nav>
       <ul>
         <li>
-          <router-link :to="{name: 'home'}">
+          <router-link active-class="active" :to="{name: 'home'}">
             À la une
           </router-link>
         </li>
         <li>
-          <router-link :to="{name: 'team'}">
+          <router-link active-class="active" :to="{name: 'team'}">
             Notre équipe
           </router-link>
         </li>
         <li class="events">
-          <router-link :to="{name: 'events'}">
+          <router-link active-class="active" :to="{name: 'events'}">
             Nos évènements
           </router-link>
-          <ul>
+          <!--<ul>
             <li>
               <router-link :to="{name: 'home'}">
                 Pago-flash
               </router-link>
             </li>
-          </ul>
+          </ul>-->
         </li>
       </ul>
     </nav>
@@ -47,7 +47,7 @@ nav>ul {
       text-decoration: none;
       transition: all .5s ease;
 
-      &:hover {
+      &:is(:hover, .active) {
         color: var(--orange);
       }
     }

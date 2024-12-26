@@ -14,4 +14,6 @@ FROM nginx:stable-alpine
 
 COPY --from=tmp /app/dist /usr/share/nginx/html
 
+ENV NODE_ENV=production
+
 CMD ["nginx", "-g", "daemon off;"]
