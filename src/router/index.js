@@ -24,7 +24,7 @@ export default createRouter({
       component: OurEventsView
     },
     {
-      path: '/flash-composition',
+      path: '/flash-composition/:id',
       name: 'flash-composition',
       component: FlashCompositionVue
     }

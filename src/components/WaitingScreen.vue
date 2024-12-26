@@ -4,8 +4,9 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import Globe from "globe.gl";
+import { defineTitle } from '@/helpers/global.utils.js'
 
 const globeRef = ref(null);
 
@@ -22,6 +23,9 @@ watch(globeRef, val => {
   world.controls().enabled = false;
 })
 
+onMounted(() => {
+  defineTitle("ça arrive 🌍...");
+})
 </script>
 
 <style scoped>

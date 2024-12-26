@@ -20,8 +20,8 @@
   src: url('/node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf');
 }
 
-.icon {
-  font-family: "mdi";
+.icon::before { /* fait belek c'est sur le before */
+  font-family: "mdi", sans-serif;
 }
 
 *, *::before, *::after {
@@ -45,7 +45,7 @@
   --red:#ff454e
 }
 
-body {
+html, body {
   background-color: var(--black);
   font-family: 'poppins-regular', sans-serif;
   color: white;

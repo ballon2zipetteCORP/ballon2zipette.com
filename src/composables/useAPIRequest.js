@@ -16,7 +16,7 @@ export default function useAPIRequest(params) {
       }
 
       const apiResponse = await fetch(url+endpoint, {
-        method
+        method: method ?? "GET"
       });
       const data = await apiResponse.json();
 
@@ -25,7 +25,7 @@ export default function useAPIRequest(params) {
         return;
       }
 
-      response.value = apiResponse;
+      response.value = data;
     } catch(e) {
       errorMessage.value = e.message;
     } finally {

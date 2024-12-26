@@ -25,6 +25,7 @@ div.telegram {
 
   & > img {
     width: 10em;
+    border-radius: 10px;
   }
 
   & > span {
