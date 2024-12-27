@@ -2,7 +2,7 @@
   <header>
     <custom-dropdown
       :items="items"
-      label="Selectionner l'évènement"
+      label="Séléctionner un évènement"
       v-model="selection"
     />
   </header>
@@ -23,12 +23,13 @@ const PAGES = ref({
     title: "Pago Flash",
     component: PagoFlash
   },
-  'braquage-flash': {
-    title: "Braquage Flash",
-    component: null,
+  'operation-liquide': {
+    title: "Opération liquide",
     isComing: true
   }
 });
+
+
 const items = computed(() =>
   Object.entries(PAGES.value).map(([key, { title, isComing }]) => ({
     label: title, value: key, disabled: isComing
@@ -58,6 +59,6 @@ section {
 
 header {
   width: fit-content;
-  margin: 1em auto;
+  margin: auto;
 }
 </style>

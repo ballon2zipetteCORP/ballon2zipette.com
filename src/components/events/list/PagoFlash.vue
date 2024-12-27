@@ -103,7 +103,7 @@ const MAX_QUANTITY = ref(4); // c vraiment la hess
 const offers = ref([
   {
     thumbnail: 'pack-1',
-    title: 'VodKH + initiation braquage-flash',
+    title: 'VodKH + initiation braquage',
     popular: true,
     quantity: 0,
   },

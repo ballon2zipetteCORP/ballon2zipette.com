@@ -13,8 +13,8 @@ const globeRef = ref(null);
 watch(globeRef, val => {
   const world = new Globe(val, { animateIn: false })
     .backgroundColor('rgba(0, 0, 0, 0)')
-    .width(500)
-    .height(500)
+    .width(400)
+    .height(400)
     .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
     .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png');
 
