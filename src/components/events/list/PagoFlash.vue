@@ -76,7 +76,7 @@
         </article>
       </section>
 
-      <button class="commander" @click="order" v-show="totalQuantity > 0">
+      <button class="commander" @click="order" v-show="totalQuantity > 0" disabled>
         Commander x{{ totalQuantity }}
       </button>
 
@@ -90,21 +90,12 @@
       </article>
     </article>
     <div class = "rule"><h1>Merci de ramenez les bouteilles vides auprès de nos fournisseurs SVP</h1></div>
-    <!--<article>
-      <h2>La fabriquation...</h2>
-
-      <img alt="" src="" />
-    </article>-->
   </section>
-
-  <!--<products-order :show-modal="orderModal" @close="closeOrderModal" :data="customerOrder" />-->
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { defineTitle } from '@/helpers/global.utils.js'
-
-import ProductsOrder from '@/components/order/ProductsOrder.vue'
 
 const MAX_QUANTITY = ref(4); // c vraiment la hess
 
@@ -112,7 +103,7 @@ const MAX_QUANTITY = ref(4); // c vraiment la hess
 const offers = ref([
   {
     thumbnail: 'pack-1',
-    title: 'VodKH + initiation braquage',
+    title: 'VodKH + initiation braquage-flash',
     popular: true,
     quantity: 0,
   },
