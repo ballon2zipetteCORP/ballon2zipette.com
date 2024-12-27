@@ -100,7 +100,7 @@ div.modal[role="dialog"] {
       cursor: pointer;
 
       position: absolute;
-      top: 15px;
+      top: -5px;
       right: 15px;
       font-size: 2em;
     }

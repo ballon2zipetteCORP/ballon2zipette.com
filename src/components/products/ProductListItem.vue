@@ -1,10 +1,15 @@
 <template>
   <article>
+    <button @click="showQrCode = true" class="icon qr-code" />
     <img
       :src="item.image"
       :alt="item.name"
     />
     <h3>{{ item.name }}</h3>
+
+    <span @click="showComposition = true" class="composition">
+      Voir la composition
+    </span>
 
     <footer>
       <div class="quantity-selector">
@@ -24,9 +29,25 @@
       </div>
     </footer>
   </article>
+
+  <product-list-item-composition
+    :composition="item.composition"
+    @close="showComposition = false"
+    :modal-shown="showComposition"
+  />
+
+  <product-list-item-qr-code
+    :product-id="item.id"
+    :modal-shown="showQrCode"
+    @close="showQrCode = false"
+  />
 </template>
 
 <script setup>
+import ProductListItemComposition from '@/components/products/ProductListItemComposition.vue'
+import { ref } from 'vue'
+import ProductListItemQrCode from '@/components/products/ProductListItemQrCode.vue'
+
 defineProps({
   item: {
     type: Object,
@@ -47,6 +68,9 @@ defineProps({
 });
 
 defineEmits(["addQuantity", "removeQuantity"]);
+
+const showComposition = ref(false);
+const showQrCode = ref(false);
 </script>
 
 
@@ -60,6 +84,22 @@ article {
   position: relative;
   padding: 1em 2em 4em;
 
+  &>button.icon.qr-code {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background-color: var(--black);
+    border: 1px solid var(--gray-1);
+    padding: .5em .6em;
+
+    &::before {
+      font-size: 1.7em;
+      content: "\F0432";
+      color: white;
+    }
+  }
+
   & > h4 {
     position: absolute;
     top: -23px;
@@ -72,6 +112,12 @@ article {
 
     padding: 0.5em 0.8em;
     border-radius: 100px;
+  }
+
+  &>span.composition {
+    color: var(--orange);
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   & > img {

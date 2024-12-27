@@ -1,41 +1,52 @@
 <template>
   <modal-default @close="emit('close')" :modal-shown="showModal">
-    <div class="content">
-      <h2>Votre commande</h2>
-      <ul>
-        <li v-for="item of items" :key="item.name">
-          <div>
-            <img :src="item.image" :alt="item.name" />
-            <h4>{{ item.name }}</h4>
-          </div>
-          <h5>Quantité: {{ item.quantity }}</h5>
-        </li>
-      </ul>
+    <template v-if="!showSuccess">
+      <div class="content">
+        <h2>Votre commande</h2>
+        <ul>
+          <li v-for="item of items" :key="item.name">
+            <div>
+              <img :src="item.image" :alt="item.name" />
+              <h4>{{ item.name }}</h4>
+            </div>
+            <h5>Quantité: {{ item.quantity }}</h5>
+          </li>
+        </ul>
 
-      <div class="form-field">
-        <label class="required" for="given-name">Prénom</label>
-        <input type="text" id="given-name" v-model="givenName">
-      </div>
-      <div class="form-field">
-        <label class="required" for="family-name">Nom</label>
-        <input type="text" id="family-name" v-model="familyName">
-      </div>
-      <div class="form-field">
-        <label class="required" for="command-text">Commentaire</label>
-        <textarea id="command-text" v-model="commentText"></textarea>
-      </div>
+        <div class="form-field">
+          <label class="required" for="given-name">Prénom</label>
+          <input type="text" id="given-name" v-model="givenName">
+        </div>
+        <div class="form-field">
+          <label class="required" for="family-name">Nom</label>
+          <input type="text" id="family-name" v-model="familyName">
+        </div>
+        <div class="form-field">
+          <label class="required" for="command-text">Commentaire</label>
+          <textarea id="command-text" v-model="commentText"></textarea>
+        </div>
 
-      <!-- TODO: being more RGPD compliant -->
+        <!-- TODO: being more RGPD compliant -->
 
-      <button @click="handle" :disabled="isDisabled">
-        {{ buttonLabel }}
-      </button>
-    </div>
+        <button @click="handleOrder" :disabled="isDisabled">
+          {{ buttonLabel }}
+        </button>
+      </div>
+    </template>
+    <template v-else>
+      <div class="order-completed">
+        <span class="icon success" />
+        <h2>Votre commande a été prise en compte</h2>
+        <h3>Vous receverez par mail un qrcode de retrait</h3>
+
+        <button @click="$emit('close')">Fermer cette fenêtre</button>
+      </div>
+    </template>
   </modal-default>
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 import ModalDefault from '@/components/ui/ModalDefault.vue'
 import useAPIRequest from '@/composables/useAPIRequest.js'
@@ -56,30 +67,37 @@ const givenName = ref("");
 const familyName = ref("");
 const commentText = ref("");
 
-const {isLoading, response, handle} = useAPIRequest({
+const showSuccess = ref(false);
+
+const {isLoading, handle} = useAPIRequest({
   endpoint: "/order",
-  method: "POST",
-  body: {
-    customer: {
-      givenName: givenName.value,
-      familyName: familyName.value,
-    },
-    order: props.items?.map(({id, quantity}) => ({productId: id, quantity})),
-    message: commentText.value
-  }
+  method: "POST"
 })
 
 const isDisabled = computed(() =>
-  !givenName.value.trim() || !familyName.value.trim() || isLoading.value
+  !givenName.value.trim()
+    || !familyName.value.trim()
+    || !commentText.value.trim()
+    || isLoading.value
 );
 
 const buttonLabel = computed(() =>
   isLoading.value ? "Envoi en cours..." : "Je commande"
 );
 
-watch(response, () => {
-  emit('close');
-});
+const handleOrder = async () => {
+  if(isDisabled.value)
+    return;
+  await handle({
+    customer: {
+      givenName: givenName.value,
+      familyName: familyName.value,
+    },
+    order: props.items?.map(({id, quantity}) => ({productId: id, quantity})),
+    message: commentText.value
+  });
+  showSuccess.value = true;
+}
 </script>
 
 <style scoped>
@@ -146,5 +164,30 @@ button {
   margin-top: 1em;
   background-color: var(--orange);
   margin-bottom: .5em;
+}
+
+div.order-completed {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+
+  padding: 1em;
+
+  span.icon.success {
+    margin: auto;
+    display: block;
+    color: var(--green);
+    &::before {
+      font-size: 10em;
+      content: "\F05E0";
+    }
+  }
+  button {
+    background-color: white;
+  }
+  h3 {
+    margin-top: .2em;
+    color: var(--gray-2);
+  }
 }
 </style>

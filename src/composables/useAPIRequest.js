@@ -6,7 +6,7 @@ export default function useAPIRequest(params) {
   const errorMessage = ref(null);
   const response = ref(null);
 
-  async function handle() {
+  async function handle(body = undefined) {
     isLoading.value = true;
     try {
       const url = import.meta.env.VITE_API_URL;
@@ -17,9 +17,10 @@ export default function useAPIRequest(params) {
 
       const apiResponse = await fetch(url+endpoint, {
         method: method ?? "GET",
-        ... params.body && {
-          body: JSON.stringify(params.body)
-        }
+        headers: {
+          'content-type': 'application/json'
+        },
+        ... body && { body: JSON.stringify(body) }
       });
       const data = await apiResponse.json();
 
