@@ -3,10 +3,10 @@
     <div class="content">
       <h2>Votre commande</h2>
       <ul>
-        <li v-for="item of data" :key="item.title">
+        <li v-for="item of items" :key="item.name">
           <div>
-            <img :src="'images/events/list/thumbnails/'+item.thumbnail+'.png'" :alt="item.title" />
-            <h4>{{ item.title }}</h4>
+            <img :src="item.image" :alt="item.name" />
+            <h4>{{ item.name }}</h4>
           </div>
           <h5>Quantité: {{ item.quantity }}</h5>
         </li>
@@ -25,30 +25,28 @@
         <textarea id="command-text" v-model="commentText"></textarea>
       </div>
 
-      <button @click="handleSend" :disabled="isDisabled">
+      <!-- TODO: being more RGPD compliant -->
+
+      <button @click="handle" :disabled="isDisabled">
         {{ buttonLabel }}
       </button>
     </div>
   </modal-default>
-
-  <products-order-completed />
 </template>
 
 <script setup>
 import { computed, ref, watch } from 'vue'
 
-import ProductsOrderCompleted from '@/components/order/ProductsOrderCompleted.vue'
 import ModalDefault from '@/components/ui/ModalDefault.vue'
-
-import useEmailSend from '@/composables/useEmailSend.js'
+import useAPIRequest from '@/composables/useAPIRequest.js'
 
 const emit = defineEmits(["close"]);
-defineProps({
+const props = defineProps({
   showModal: {
     type: Boolean,
     required: true
   },
-  data: { // refers to the customer's order
+  items: {
     type: Object,
     required: true
   }
@@ -58,7 +56,18 @@ const givenName = ref("");
 const familyName = ref("");
 const commentText = ref("");
 
-const {isLoading, handleSend, isSent} = useEmailSend();
+const {isLoading, response, handle} = useAPIRequest({
+  endpoint: "/order",
+  method: "POST",
+  body: {
+    customer: {
+      givenName: givenName.value,
+      familyName: familyName.value,
+    },
+    order: props.items?.map(({id, quantity}) => ({productId: id, quantity})),
+    message: commentText.value
+  }
+})
 
 const isDisabled = computed(() =>
   !givenName.value.trim() || !familyName.value.trim() || isLoading.value
@@ -68,11 +77,9 @@ const buttonLabel = computed(() =>
   isLoading.value ? "Envoi en cours..." : "Je commande"
 );
 
-watch(isSent, (newVal) => {
-  if(newVal === true) {
-    emit('close');
-  }
-})
+watch(response, () => {
+  emit('close');
+});
 </script>
 
 <style scoped>

@@ -99,7 +99,7 @@ import { defineTitle } from '@/helpers/global.utils.js'
 
 const MAX_QUANTITY = ref(4); // c vraiment la hess
 
-// offers
+// products
 const offers = ref([
   {
     thumbnail: 'pack-1',
@@ -129,7 +129,7 @@ const totalQuantity = computed(() => offers.value.reduce((a, b) => a + b.quantit
 
 /** ORDER GESTION **/
 
-// customer's order
+// customer's products
 const orderModal = ref(false)
 
 // get at least all items that get one of quantity

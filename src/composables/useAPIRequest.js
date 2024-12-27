@@ -1,12 +1,12 @@
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 export default function useAPIRequest(params) {
 
-  const isLoading = ref(true);
+  const isLoading = ref(false);
   const errorMessage = ref(null);
   const response = ref(null);
 
-  onMounted(async () => {
+  async function handle() {
     isLoading.value = true;
     try {
       const url = import.meta.env.VITE_API_URL;
@@ -16,7 +16,10 @@ export default function useAPIRequest(params) {
       }
 
       const apiResponse = await fetch(url+endpoint, {
-        method: method ?? "GET"
+        method: method ?? "GET",
+        ... params.body && {
+          body: JSON.stringify(params.body)
+        }
       });
       const data = await apiResponse.json();
 
@@ -31,8 +34,8 @@ export default function useAPIRequest(params) {
     } finally {
       isLoading.value = false;
     }
-  });
+  }
 
-  return {isLoading, errorMessage, response};
+  return {isLoading, errorMessage, handle};
 
 }

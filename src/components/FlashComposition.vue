@@ -40,7 +40,7 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { defineTitle } from '@/helpers/global.utils.js'
 
 import useAPIRequest from '@/composables/useAPIRequest.js'
@@ -50,7 +50,7 @@ import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
 const route = useRoute();
 const productId = ref(route?.params?.id);
 
-const {isLoading, errorMessage, response} = useAPIRequest({
+const {isLoading, errorMessage, response, handle} = useAPIRequest({
   endpoint: "/products/get/"+productId.value
 });
 
@@ -61,6 +61,8 @@ watch(product, (val) => {
     defineTitle(`Composition ${val.name}`);
   }
 })
+
+onMounted(() => handle());
 </script>
 
 <style scoped>
