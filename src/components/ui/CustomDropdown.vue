@@ -119,6 +119,9 @@ div.dropdown {
     background-color: var(--black);
     color: white;
 
+    max-height: 15em;
+    overflow: auto;
+
     border: 1px solid var(--gray-1);
     border-radius: 10px;
     list-style: none;
