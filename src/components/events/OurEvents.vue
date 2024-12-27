@@ -26,6 +26,18 @@ const PAGES = ref({
   'operation-liquide': {
     title: "Opération liquide",
     isComing: true
+  },
+  'ivresse-a-la-chiche': {
+      title: 'Ivresse à la chiche',
+      isComing: true
+  },
+  'wacky-party': {
+    title: "Wacky party",
+    isComing: true
+  },
+  'tir-aux-ballons': {
+    title: "Tir aux ballons",
+    isComing: true
   }
 });
 
