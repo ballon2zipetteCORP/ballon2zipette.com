@@ -31,12 +31,13 @@ export default function useAPIRequest(params) {
 
       response.value = data;
     } catch(e) {
+      console.error(e);
       errorMessage.value = e.message;
     } finally {
       isLoading.value = false;
     }
   }
 
-  return {isLoading, errorMessage, handle};
+  return {isLoading, errorMessage, response, handle};
 
 }

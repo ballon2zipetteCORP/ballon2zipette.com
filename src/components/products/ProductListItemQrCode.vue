@@ -32,6 +32,8 @@ h2 {
 img {
   display: block;
   margin: 1em auto;
+  width: 20em;
+  border-radius: 10px;
 }
 span {
   color: var(--gray-2);

@@ -1,5 +1,5 @@
 <template>
-  <template v-if="!isLoading">
+  <template v-if="!isLoading && items">
     <article class="offers">
       <h2>{{ title }}</h2>
 
@@ -23,6 +23,7 @@
     </article>
 
     <products-order
+      v-if="!isLoading"
       @close="showOrderModal = false"
       :items="selectedProducts"
       :show-modal="showOrderModal"
@@ -34,7 +35,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, toRefs, watch } from 'vue'
 
 import ProductListItem from '@/components/products/ProductListItem.vue';
 import ProductsOrder from '@/components/products/ProductsOrder.vue'
@@ -48,7 +49,7 @@ const props = defineProps({
     required: false
   },
   items: {
-    type: [Array, undefined, null],
+    type: [Array, null],
     required: true
   },
   isLoading: {
@@ -57,18 +58,21 @@ const props = defineProps({
     default: false
   }
 });
-const products = ref(
-  props.items?.map((item) => {
+const propsRefs = toRefs(props);
+const products = ref([]);
+
+watch(propsRefs.items, val => {
+  products.value = val?.map((item) => {
     item.quantity = 0;
     return item;
   })
-);
+});
 
 const totalQuantity = computed(() => {
-  return products.value.reduce((acc, item) => acc+item.quantity, 0);
+  return products.value && products.value.reduce((acc, item) => acc+item.quantity, 0);
 });
 const selectedProducts = computed(() => {
-  return products.value.filter(product => product.quantity > 0);
+  return products.value && products.value.filter(product => product.quantity > 0);
 });
 
 const showOrderModal = ref(false);
@@ -122,7 +126,7 @@ button.order {
   color: var(--black);
   font-size: 1.2em;
   background-color: var(--orange);
-  border-radius: 100px;
+  border-radius: 10px;
   cursor: pointer;
   padding: 10px 2em 10px 20px;
   border: none;

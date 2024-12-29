@@ -22,6 +22,11 @@
           <input type="text" id="family-name" v-model="familyName">
         </div>
         <div class="form-field">
+          <label class="required" for="email">Email</label>
+          <input type="email" id="email" v-model="email">
+          <span class="icon info">Uniquement utilisé pour recevoir la confirmation de la commande.</span>
+        </div>
+        <div class="form-field">
           <label class="required" for="command-text">Commentaire</label>
           <textarea id="command-text" v-model="commentText"></textarea>
         </div>
@@ -65,6 +70,7 @@ const props = defineProps({
 
 const givenName = ref("");
 const familyName = ref("");
+const email = ref("");
 const commentText = ref("");
 
 const showSuccess = ref(false);
@@ -77,6 +83,7 @@ const {isLoading, handle} = useAPIRequest({
 const isDisabled = computed(() =>
   !givenName.value.trim()
     || !familyName.value.trim()
+    || !email.value.trim()
     || !commentText.value.trim()
     || isLoading.value
 );
@@ -92,6 +99,7 @@ const handleOrder = async () => {
     customer: {
       givenName: givenName.value,
       familyName: familyName.value,
+      email: email.value
     },
     order: props.items?.map(({id, quantity}) => ({productId: id, quantity})),
     message: commentText.value
@@ -156,6 +164,20 @@ div.form-field {
     width: 100%;
     resize: none;
     height: 6rem;
+  }
+
+  &>span.info {
+    color: var(--gray-2);
+    font-size: .8em;
+    margin-top: .5em;
+
+    display: flex;
+    align-items: center;
+    gap: .5em;
+
+    &::before {
+      content: "\F02FC";
+    }
   }
 }
 

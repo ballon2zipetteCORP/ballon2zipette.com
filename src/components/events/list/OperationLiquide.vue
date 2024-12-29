@@ -1,41 +1,31 @@
 <template>
-  <!--<div class="hero-header">
+  <div class="hero-header">
     <img src="/images/events/operation-liquide/wanted-poster.jpg" alt="wanted plan-braquage" />
-  </div>-->
+  </div>
 
   <product-list
-    :items="[{
-      id: 'eb4c785d-fc83-4547-a3fd-8981bb685f6',
-      name: 'Le bandito',
-      maxQuantity: 10,
-      composition: [
-        'Yeager (4cl)',
-        'Orange (3cl)'
-      ],
-      image: 'https://api.ballon2zipette.com/static/f04f33c2-ebfd-4215-9b23-ff770c52c93a.png'
-    },
-    {
-      id: 'eb4c785d-fc83-4547-a3fd-8981bb685f6',
-      name: 'La kitcha',
-      maxQuantity: 10,
-      composition: [
-        'Yeager (4cl)',
-        'Orange (3cl)'
-      ],
-      image: 'https://api.ballon2zipette.com/static/f04f33c2-ebfd-4215-9b23-ff770c52c93a.png'
-    }]"
+    title="Ce que le bandit a volé"
+    :is-loading="isLoading"
+    :items="response?.products ?? null"
   />
 </template>
 
 <script setup>
 
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { defineTitle } from '@/helpers/global.utils.js'
 
+import useAPIRequest from '@/composables/useAPIRequest.js'
 import ProductList from '@/components/products/ProductList.vue'
+
+const eventId = ref("operation-liquide");
+const {isLoading, response, handle} = useAPIRequest({
+  endpoint: "/products/event/"+eventId.value
+})
 
 onMounted(() => {
   defineTitle("Opération liquide");
+  handle();
 });
 
 </script>
@@ -43,7 +33,7 @@ onMounted(() => {
 <style scoped>
 div.hero-header {
   width: fit-content;
-  margin: auto;
+  margin: 1em auto;
   text-align: center;
 
   &>img {

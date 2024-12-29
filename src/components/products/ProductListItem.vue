@@ -51,11 +51,7 @@ import ProductListItemQrCode from '@/components/products/ProductListItemQrCode.v
 defineProps({
   item: {
     type: Object,
-    required: true,
-    validator: prop => {
-      return prop.name !== undefined &&
-        prop.image !== undefined;
-    }
+    required: true
   },
   maxTotalQuantity: {
     type: Number,
