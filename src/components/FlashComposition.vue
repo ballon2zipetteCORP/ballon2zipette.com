@@ -78,10 +78,10 @@ div.composition {
 
   &>div.middle {
     position: absolute;
-    top: 50%;
+    margin-top: 5em;
     left: 50%;
 
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
 
     &>img {
       display: block;

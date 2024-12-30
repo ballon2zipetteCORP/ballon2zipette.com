@@ -3,6 +3,8 @@
     <img src="/images/events/operation-liquide/wanted-poster.jpg" alt="wanted plan-braquage" />
   </div>
 
+  <h2 class="total-stolen-count">Montant du butin: 10 000€</h2>
+
   <product-list
     title="Ce que le bandit a volé"
     :is-loading="isLoading"
@@ -42,5 +44,14 @@ div.hero-header {
     display: block;
     margin: auto auto .5em;
   }
+}
+h2.total-stolen-count {
+  width: fit-content;
+  margin: 1em auto;
+
+  padding: .5em .8em;
+  background-color: var(--orange);
+  color: var(--black);
+  border-radius: 10px;
 }
 </style>

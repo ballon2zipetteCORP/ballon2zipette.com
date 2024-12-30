@@ -80,6 +80,8 @@
         Commander x{{ totalQuantity }}
       </button>
 
+      <div class = "rule"><h1>Merci de ramenez les bouteilles vides auprès de nos fournisseurs SVP</h1></div>
+
       <article class="chiche">
         <h2>Le père noël et ses lutins vous remercie pour cette soirée !</h2>
         <p>
@@ -88,8 +90,13 @@
         <img src="/images/events/pago-flash/msn.jpg" alt="msn" />
 
       </article>
+
+      <article class="back-in-pictures">
+        <h2>Retour en images sur cet évènement...</h2>
+
+        <video src="/videos/events/pago-flash/recap.mp4" controls />
+      </article>
     </article>
-    <div class = "rule"><h1>Merci de ramenez les bouteilles vides auprès de nos fournisseurs SVP</h1></div>
   </section>
 </template>
 
@@ -128,23 +135,6 @@ const offers = ref([
 const totalQuantity = computed(() => offers.value.reduce((a, b) => a + b.quantity, 0))
 
 /** ORDER GESTION **/
-
-// customer's products
-const orderModal = ref(false)
-
-// get at least all items that get one of quantity
-const customerOrder = computed(() => offers.value.filter(({ quantity }) => quantity > 0))
-
-function order() {
-  orderModal.value = true
-}
-
-function closeOrderModal({ done = false } = {}) {
-  if (done) {
-    offers.value.forEach((offer) => (offer.quantity = 0))
-  }
-  orderModal.value = false
-}
 
 /** ORDER GESTION **/
 
@@ -356,6 +346,24 @@ button.commander {
   padding: 10px 20px;
   border: none;
   margin: auto;
+}
+
+article.back-in-pictures {
+  width: fit-content;
+  margin: 2em auto;
+
+  h2 {
+    font-family: "poppins-bold", sans-serif;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+  }
+
+  video {
+    width: 20em;
+    border-radius: 15px;
+    display: block;
+    margin: auto;
+  }
 }
 
 article.chiche {

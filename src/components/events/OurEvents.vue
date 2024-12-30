@@ -17,6 +17,7 @@ import { computed, ref } from 'vue'
 
 import PagoFlash from '@/components/events/list/PagoFlash.vue'
 import CustomDropdown from '@/components/ui/CustomDropdown.vue'
+import OperationLiquide from '@/components/events/list/OperationLiquide.vue'
 
 const PAGES = ref({
   'pago-flash': {
@@ -25,6 +26,7 @@ const PAGES = ref({
   },
   'operation-liquide': {
     title: "Opération liquide",
+    component: OperationLiquide,
     isComing: true
   },
   'ivresse-a-la-chiche': {
