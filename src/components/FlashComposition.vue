@@ -77,11 +77,8 @@ div.composition {
   background-color: var(--black);
 
   &>div.middle {
-    position: absolute;
-    margin-top: 5em;
-    left: 50%;
-
-    transform: translateY(-50%);
+    width: 20em;
+    margin: 2em auto;
 
     &>img {
       display: block;
