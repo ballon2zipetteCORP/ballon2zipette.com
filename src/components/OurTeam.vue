@@ -48,9 +48,10 @@ const teamsMembers = computed(() => {
   return OUR_TEAM.value.reduce((res, team) => {
     if(!res[team.post])
       res[team.post] = [];
-
+    
     team.video = Array.isArray(team.video) ?
       team.video.map(v => `/videos/our-team/`+v)
+      : `/videos/our-team/`+team.video : undefined;
       : `/videos/our-team/`+team.video;
 
     team.thumbnail = '/images/our-team/'+team.thumbnail;
