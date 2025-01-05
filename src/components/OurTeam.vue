@@ -34,9 +34,9 @@ const OUR_TEAM = ref([
   { thumbnail: "ballon2zipette.jpg", post: "CEO", video: ["ballon2zipette.mov", "ballon2zipette-2.mp4"] },
   { thumbnail: "momoplansnap.jpg", post: "CEO", video: "momoplansnap.mp4" },
   { thumbnail: "planBraquageMechant.jpg", post: "CEO", video: "planBraquage.mov"}, //, boycottRate: 2, boycottReason: "Vente d'arme 🔫"
-  { boycottRate: 2, boycottReason: "Tentative de boycott 🙅🏼‍♂️", thumbnail: "panoramix.jpg", post: "Associé.e", video: "panoramix.mp4" },
+  { thumbnail: "panoramix.jpg", post: "Associé.e", video: "panoramix.mp4" },
   { thumbnail: "nourisse.jpg", post: "Associé.e" },
-  { boycottEate:2, boycottReason: "a poucave", thumbnail: "panorapetite.jpg", post: "Associé.e", video: "panorapetite.mp4" }
+  { thumbnail: "panorapetite.jpg", post: "Associé.e", video: "panorapetite.mp4" }
 ]);
 
 const OUR_GUNS = ref([
