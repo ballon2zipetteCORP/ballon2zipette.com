@@ -1,46 +1,97 @@
 <template>
-  <article>
-    <button @click="showQrCode = true" class="icon qr-code" />
-    <img
-      :src="item.image"
-      :alt="item.name"
-    />
-    <h3>{{ item.name }}</h3>
+  <template v-if="type === 'DRINKS'">
+    <article>
+      <button @click="showQrCode = true" class="icon qr-code" />
+      <img
+        :src="item.image"
+        :alt="item.name"
+      />
+      <h3>{{ item.name }}</h3>
 
-    <span @click="showComposition = true" class="composition">
+      <span @click="showComposition = true" class="composition">
       Voir la composition
     </span>
 
-    <footer>
-      <div class="quantity-selector">
-        <button
-          @click="$emit('removeQuantity', item.name)"
-          :disabled="item.quantity < 1"
-        >
-          -
-        </button>
-        <span>{{ item.quantity }}</span>
-        <button
-          @click="$emit('addQuantity', item.name)"
-          :disabled="totalQuantity >= item.maxQuantity || item.maxQuantity < 1 || totalQuantity >= maxTotalQuantity"
-        >
-          +
-        </button>
-      </div>
-    </footer>
-  </article>
+      <footer>
+        <div class="quantity-selector">
+          <button
+            @click="$emit('removeQuantity', item.name)"
+            :disabled="item.quantity < 1"
+          >
+            -
+          </button>
+          <span>{{ item.quantity }}</span>
+          <button
+            @click="$emit('addQuantity', item.name)"
+            :disabled="totalQuantity >= item.maxQuantity || item.maxQuantity < 1 || totalQuantity >= maxTotalQuantity"
+          >
+            +
+          </button>
+        </div>
+      </footer>
+    </article>
 
-  <product-list-item-composition
-    :composition="item.composition"
-    @close="showComposition = false"
-    :modal-shown="showComposition"
-  />
+    <product-list-item-composition
+      :composition="item.attributes.composition"
+      @close="showComposition = false"
+      :modal-shown="showComposition"
+    />
 
-  <product-list-item-qr-code
-    :product-id="item.id"
-    :modal-shown="showQrCode"
-    @close="showQrCode = false"
-  />
+    <product-list-item-qr-code
+      :product-id="item.id"
+      :modal-shown="showQrCode"
+      @close="showQrCode = false"
+    />
+  </template>
+  <template v-else-if="type === 'GOODIES'">
+    <article>
+      <img
+        :src="currentVariante.image"
+        :alt="item.name"
+      />
+      <h3>{{ item.name }}</h3>
+      <h4>Couleur: {{ currentVariante.color.label }}</h4>
+
+      <ul class="variantes">
+        <li
+          :class="{'active': currentVariante === variante}"
+          @click="currentVariante = variante"
+          :style="{'background-color': variante.color.hexadecimal}"
+          v-for="variante in item.attributes.variantes"
+          :key="variante"
+        />
+      </ul>
+
+      <ul class="sizes">
+        <li
+          :class="{'active': currentSize === size}"
+          @click="currentSize = size"
+          v-for="size in currentVariante.sizes"
+          :key="size"
+        >
+          {{ size }}
+        </li>
+      </ul>
+
+      <footer>
+        <div class="quantity-selector">
+          <button
+            @click="$emit('removeQuantity', item.name)"
+            :disabled="item.quantity < 1"
+          >
+            -
+          </button>
+          <span>{{ item.quantity }}</span>
+          <button
+            @click="$emit('addQuantity', item.name)"
+            :disabled="totalQuantity >= item.maxQuantity || item.maxQuantity < 1 || totalQuantity >= maxTotalQuantity"
+          >
+            +
+          </button>
+        </div>
+      </footer>
+    </article>
+  </template>
 </template>
 
 <script setup>
@@ -48,9 +99,13 @@ import ProductListItemComposition from '@/components/products/ProductListItemCom
 import { ref } from 'vue'
 import ProductListItemQrCode from '@/components/products/ProductListItemQrCode.vue'
 
-defineProps({
+const props = defineProps({
   item: {
     type: Object,
+    required: true
+  },
+  type: {
+    type: String, // DRINKS, GOODIES
     required: true
   },
   maxTotalQuantity: {
@@ -67,6 +122,10 @@ defineEmits(["addQuantity", "removeQuantity"]);
 
 const showComposition = ref(false);
 const showQrCode = ref(false);
+
+// only for goodies
+const currentVariante = ref(props.item.attributes.variantes?.[0]);
+const currentSize = ref(null);
 </script>
 
 
@@ -96,7 +155,7 @@ article {
     }
   }
 
-  & > h4 {
+  & > h4.popular {
     position: absolute;
     top: -23px;
     left: 50%;
@@ -124,6 +183,35 @@ article {
 
   & > h3 {
     font-family: 'poppins-bold', sans-serif;
+  }
+
+  &>ul.variantes,
+  &>ul.sizes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+
+    list-style: none;
+    margin-top: .5em;
+
+    &>li {
+      cursor: pointer;
+      transition: all .5s ease;
+
+      &.active {
+        color: var(--orange);
+      }
+    }
+  }
+
+  &>ul.variantes li {
+    border-radius: 100px;
+    width: 2em;
+    height: 2em;
+    &.active {
+      opacity: .5;
+    }
   }
 
   & > footer {

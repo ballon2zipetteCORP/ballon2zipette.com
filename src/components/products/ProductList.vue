@@ -8,6 +8,7 @@
           @add-quantity="addQuantity"
           @remove-quantity="removeQuantity"
 
+          :type="type"
           :item="item"
           :total-quantity="totalQuantity"
           :max-total-quantity="MAX_PRODUCTS_QUANTITY"
@@ -48,6 +49,10 @@ const props = defineProps({
     default: "Nos offres",
     required: false
   },
+  type: {
+    type: String,
+    required: true
+  },
   items: {
     type: [Array, null],
     required: true
@@ -69,10 +74,10 @@ watch(propsRefs.items, val => {
 });
 
 const totalQuantity = computed(() => {
-  return products.value && products.value.reduce((acc, item) => acc+item.quantity, 0);
+  return products.value?.reduce((acc, item) => acc+item.quantity, 0);
 });
 const selectedProducts = computed(() => {
-  return products.value && products.value.filter(product => product.quantity > 0);
+  return products.value?.filter(product => product.quantity > 0);
 });
 
 const showOrderModal = ref(false);

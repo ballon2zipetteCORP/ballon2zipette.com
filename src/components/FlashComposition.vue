@@ -4,8 +4,8 @@
       <template v-if="!isLoading && !errorMessage && product">
         <h1>Informations sur le flash</h1>
 
-        <span :class="`icon flash-alcohol ${product.alcoholise ? 'alcoholise' : 'non-alcoholise'}`">
-          {{ product.alcoholise ? "Contient de l'alcool" : 'Ne contient pas d\'alcool' }}
+        <span :class="`icon flash-alcohol ${product.attributes.alcoholise ? 'alcoholise' : 'non-alcoholise'}`">
+          {{ product.attributes.alcoholise ? "Contient de l'alcool" : 'Ne contient pas d\'alcool' }}
         </span>
 
         <img :alt="product.name" :src="product.image" />
@@ -16,7 +16,7 @@
 
         <h4>Composition du flash</h4>
         <ul>
-          <li v-for="line in product.composition" :key="line">
+          <li v-for="line in product.attributes.composition" :key="line">
             {{ line }}
           </li>
         </ul>
@@ -70,15 +70,18 @@ div.composition {
   width: 100%;
   height: 100vh;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 
   background-color: var(--black);
 
   &>div.middle {
-    width: 20em;
-    margin: 2em auto;
+    position: absolute;
+    margin-top: 5em;
+    left: 50%;
+
+    transform: translateY(-50%);
 
     &>img {
       display: block;

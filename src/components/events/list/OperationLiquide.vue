@@ -7,8 +7,9 @@
 
   <product-list
     title="Ce que le bandit a volé"
-    :is-loading="isLoading"
-    :items="response?.products ?? null"
+    :is-loading="isDrinksLoading"
+    type="DRINKS"
+    :items="drinks?.products ?? null"
   />
 </template>
 
@@ -21,13 +22,13 @@ import useAPIRequest from '@/composables/useAPIRequest.js'
 import ProductList from '@/components/products/ProductList.vue'
 
 const eventId = ref("operation-liquide");
-const {isLoading, response, handle} = useAPIRequest({
-  endpoint: "/products/event/"+eventId.value
+const {isLoading: isDrinksLoading, response: drinks, handle: handleDrinks} = useAPIRequest({
+  endpoint: "/products/event/"+eventId.value+"?type=DRINKS"
 })
 
 onMounted(() => {
   defineTitle("Opération liquide");
-  handle();
+  handleDrinks();
 });
 
 </script>
