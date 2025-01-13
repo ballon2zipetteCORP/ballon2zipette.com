@@ -124,7 +124,7 @@ const showComposition = ref(false);
 const showQrCode = ref(false);
 
 // only for goodies
-const currentVariante = ref(props.item.attributes.variantes?.[0]);
+const currentVariante = ref(props.item?.attributes?.variantes?.[0]);
 const currentSize = ref(null);
 </script>
 
