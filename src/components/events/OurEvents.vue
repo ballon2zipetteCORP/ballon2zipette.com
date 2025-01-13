@@ -26,8 +26,7 @@ const PAGES = ref({
   },
   'operation-liquide': {
     title: "Opération liquide",
-    component: OperationLiquide,
-    isComing: true
+    component: OperationLiquide
   },
   'ivresse-a-la-chiche': {
       title: 'Ivresse à la chiche',
