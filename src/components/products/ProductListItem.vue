@@ -32,7 +32,7 @@
     </article>
 
     <product-list-item-composition
-      :composition="item.attributes.composition"
+      :composition="item.attributes?.composition"
       @close="showComposition = false"
       :modal-shown="showComposition"
     />
