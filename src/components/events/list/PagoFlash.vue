@@ -80,6 +80,10 @@
         Commander x{{ totalQuantity }}
       </button>
 
+      <div class="EventFinished" @click="order">
+        <h1>Évènement Fini</h1>
+      </div>
+
       <div class = "rule"><h1>Merci de ramenez les bouteilles vides auprès de nos fournisseurs SVP</h1></div>
 
       <article class="chiche">
