@@ -80,8 +80,8 @@
         Commander x{{ totalQuantity }}
       </button>
 
-      <div class="EventFinished" @click="order">
-        <h1>Évènement Fini</h1>
+      <div class="EventFinished" >
+        <h1>⚠️ Évènement Fini ⚠️</h1>
       </div>
 
       <div class = "rule"><h1>Merci de ramenez les bouteilles vides auprès de nos fournisseurs SVP</h1></div>
@@ -401,6 +401,10 @@ div.rule{
     font-size: 20px;
     color: var(--orange);
   }
+div.EventFinished
+{
+  font-size: 40px;
+}
 /* RESPONSIVE */
 @media screen and (max-width: 520px) {
   section > article.about-us > div > div {

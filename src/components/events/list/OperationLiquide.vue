@@ -1,6 +1,13 @@
 <template>
   <div class="hero-header">
     <img src="/images/events/operation-liquide/wanted-poster.jpg" alt="wanted plan-braquage" />
+    <card-person
+
+      post="Braquage footage"
+      :video="['/videos/events/operation-liquide/carDrive.mp4']"
+      avatar="/images/events/operation-liquide/carBroke.jpg"
+
+    />
   </div>
 
   <h2 class="total-stolen-count">Montant du butin: 10 000€</h2>
@@ -20,6 +27,7 @@ import { defineTitle } from '@/helpers/global.utils.js'
 
 import useAPIRequest from '@/composables/useAPIRequest.js'
 import ProductList from '@/components/products/ProductList.vue'
+import CardPerson from '@/components/ui/cards/CardPerson.vue'
 
 const eventId = ref("operation-liquide");
 const {isLoading: isDrinksLoading, response: drinks, handle: handleDrinks} = useAPIRequest({
@@ -55,4 +63,5 @@ h2.total-stolen-count {
   color: var(--black);
   border-radius: 10px;
 }
+
 </style>

@@ -10,6 +10,7 @@
     <img loading="lazy" :style="{ filter: `blur(${boycottRate}px)` }" :alt="avatar" :src="avatar" />
     <span v-if="video" class="icon" :class="isVideoMuted ? 'muted' : 'volume'"></span>
     <video
+      class="video"
       v-if="video"
       :style="{ filter: `blur(${boycottRate}px)` }"
       :src="Array.isArray(video) ? video[0] : video"
@@ -116,13 +117,13 @@ article {
     width: 15em;
     border-radius: 10px;
     transition: all 0.5s ease;
+
   }
 
   & > video {
     opacity: 0;
     width: 15em;
     border-radius: 10px;
-
     position: absolute;
     transition: all 0.5s ease;
     top: 0;
