@@ -31,17 +31,18 @@ import CardPerson from '@/components/ui/cards/CardPerson.vue'
 import CardCalibre from '@/components/ui/cards/CardDefault.vue'
 
 const OUR_TEAM = ref([
-  { thumbnail: "ballon2zipette.jpg", post: "CEO", video: ["ballon2zipette.mov", "ballon2zipette-2.mp4"] },
+  { thumbnail: "ballon2zipette.jpg", post: "CEO", video: ["ballon2zipette.mov", "ballon2zipette-2.mp4"]},
   { thumbnail: "momoplansnap.jpg", post: "CEO", video: "momoplansnap.mp4" },
   { thumbnail: "planBraquageMechant.jpg", post: "CEO", video: ["plan-braquage.mov", "plan-braquage-2.mp4"]},
   { thumbnail: "panoramix.jpg", post: "Associé.e", video: "panoramix.mp4" },
   { thumbnail: "nourisse.jpg", post: "Associé.e" },
-  { thumbnail: "panorapetite.jpg", post: "Associé.e", video: "panorapetite.mp4" }
+  { thumbnail: "panorapetite.jpg", post: "Associé.e", video: "panorapetite.mp4",boycottRate:2,boycottReason:"PUE LA MERDE SUR LOL" }
 ]);
 
 const OUR_GUNS = ref([
   { path: "gun.jpeg", title: "GLOCK 18 - 9mm collab avec Drake", post : "small" },
-  { path: "batte-de-baseball.jpg", title: "Batte de baseball - édition limitée", post : "xxl" }
+  { path: "batte-de-baseball.jpg", title: "Batte de baseball - édition limitée", post : "xxl" },
+  { path: "sword.jpg", title : "Arme de l'ancien - ALEX BOUYAVE ILAN", post:"standard"}
 ]);
 
 const teamsMembers = computed(() => {

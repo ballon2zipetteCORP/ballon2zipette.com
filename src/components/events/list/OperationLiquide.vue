@@ -1,13 +1,16 @@
 <template>
   <div class="hero-header">
     <img src="/images/events/operation-liquide/wanted-poster.jpg" alt="wanted plan-braquage" />
-    <card-person
+    <div class="braquageFootage">
+      <card-person
 
-      post="Braquage footage"
-      :video="['/videos/events/operation-liquide/carDrive.mp4']"
-      avatar="/images/events/operation-liquide/carBroke.jpg"
+        post="Braquage footage"
+        :video="['/videos/events/operation-liquide/carDrive.mp4']"
+        avatar="/images/events/operation-liquide/carBroke.jpg"
 
-    />
+      />
+    </div>
+
   </div>
 
   <h2 class="total-stolen-count">Montant du butin: 10 000€</h2>
@@ -52,6 +55,10 @@ div.hero-header {
     border-radius: 10px;
     display: block;
     margin: auto auto .5em;
+  }
+
+  & > div{
+    margin-top: 40px;
   }
 }
 h2.total-stolen-count {
