@@ -33,7 +33,7 @@ import CardCalibre from '@/components/ui/cards/CardDefault.vue'
 const OUR_TEAM = ref([
   { thumbnail: "ballon2zipette.jpg", post: "CEO", video: ["ballon2zipette.mov", "ballon2zipette-2.mp4"] },
   { thumbnail: "momoplansnap.jpg", post: "CEO", video: "momoplansnap.mp4" },
-  { thumbnail: "planBraquageMechant.jpg", post: "CEO", video: ["plan-braquage.mov", "plan-braquage-2.mp4"], boycottRate: 2, boycottReason: "Il casse les couilles"},
+  { thumbnail: "planBraquageMechant.jpg", post: "CEO", video: ["plan-braquage.mov", "plan-braquage-2.mp4"]},
   { thumbnail: "panoramix.jpg", post: "Associé.e", video: "panoramix.mp4" },
   { thumbnail: "nourisse.jpg", post: "Associé.e" },
   { thumbnail: "panorapetite.jpg", post: "Associé.e", video: "panorapetite.mp4" }
