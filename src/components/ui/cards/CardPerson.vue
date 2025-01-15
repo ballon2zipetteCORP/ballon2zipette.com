@@ -127,7 +127,8 @@ article {
     position: absolute;
     transition: all 0.5s ease;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   & > span.boycotted > span.boycott-reason {
