@@ -1,5 +1,5 @@
 <template>
-  <article ref="articleRef">
+  <article ref="articleRef" >
     <span class="boycotted" v-if="boycottRate > 0">
       <span class="boycott-reason">
         {{ boycottReason }}
@@ -48,6 +48,16 @@ const props = defineProps({
     required: false,
     default: 0,
   },
+  height : {
+    type: [String, undefined],
+    required: false,
+    default: '427px',
+  },
+  width : {
+    type: [String, undefined],
+    required: false,
+    default: '240px',
+  }
 })
 
 const articleRef = ref()
@@ -79,8 +89,8 @@ watch(articleRef, (article) => {
 .icon {
   opacity: 0;
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 3%;
+  left: 5%;
   z-index: 100;
   width: 42px;
   height: 42px;

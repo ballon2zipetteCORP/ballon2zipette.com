@@ -6,7 +6,7 @@
 
         post="Braquage footage"
         :video="['/videos/events/operation-liquide/carDrive.mp4']"
-        avatar="/images/events/operation-liquide/carBroke.jpg"
+        :avatar="'/images/events/operation-liquide/carBroke.jpg'"
 
       />
     </div>
@@ -49,6 +49,10 @@ div.hero-header {
   width: fit-content;
   margin: 1em auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   &>img {
     width: 20em;
@@ -58,8 +62,12 @@ div.hero-header {
   }
 
   & > div{
+    position: relative;
+
     margin-top: 40px;
+    width: 240px;
   }
+
 }
 h2.total-stolen-count {
   width: fit-content;
@@ -70,5 +78,6 @@ h2.total-stolen-count {
   color: var(--black);
   border-radius: 10px;
 }
+
 
 </style>

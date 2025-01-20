@@ -73,7 +73,7 @@ onMounted(() => {
 <style scoped>
 h2 {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 section {

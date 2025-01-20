@@ -31,7 +31,7 @@ section{
 }
 article {
   position: relative;
-
+  margin: 30px;
   &>img {
     width: 15em;
     border-radius: 20px;
