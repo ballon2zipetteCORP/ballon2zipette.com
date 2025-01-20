@@ -115,6 +115,10 @@ const props = defineProps({
   totalQuantity: {
     type: Number,
     required: true
+  },
+  composition: {
+    type : String,
+    required : false
   }
 });
 
@@ -122,7 +126,6 @@ defineEmits(["addQuantity", "removeQuantity"]);
 
 const showComposition = ref(false);
 const showQrCode = ref(false);
-
 // only for goodies
 const currentVariante = ref(props.item?.attributes?.variantes?.[0]);
 const currentSize = ref(null);
@@ -133,7 +136,6 @@ const currentSize = ref(null);
 article {
   background-color: var(--black-2);
   flex-basis: 10em;
-
   border-radius: 15px;
   text-align: center;
   position: relative;
