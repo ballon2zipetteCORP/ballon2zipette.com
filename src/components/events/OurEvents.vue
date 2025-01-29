@@ -39,6 +39,10 @@ const PAGES = ref({
   'tir-aux-ballons': {
     title: "Tir aux ballons",
     isComing: true
+  },
+  'mmkhapta': {
+    title: "MMKhapta",
+    isComing: true
   }
 });
 
