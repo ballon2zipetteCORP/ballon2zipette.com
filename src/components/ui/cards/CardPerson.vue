@@ -86,6 +86,7 @@ watch(articleRef, (article) => {
 </script>
 
 <style scoped>
+
 .icon {
   opacity: 0;
   position: absolute;

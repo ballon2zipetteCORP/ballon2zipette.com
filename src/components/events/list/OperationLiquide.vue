@@ -4,12 +4,18 @@
     <div class="braquageFootage">
       <card-person
 
-        post="Braquage footage"
+        post="Braquage Footage"
         :video="['/videos/events/operation-liquide/carDrive.mp4']"
         :avatar="'/images/events/operation-liquide/carBroke.jpg'"
 
       />
+      <card-person
+                  post="BONUS SKI"
+                  :video="['/videos/events/operation-liquide/snowVacations.mp4']"
+                  :avatar="'/images/events/operation-liquide/cardWinterVacation.jpg'"/>
+
     </div>
+
 
   </div>
 
@@ -30,6 +36,8 @@
       <h4>{{ officer.name }}</h4>
     </article>
   </section>
+
+
 </template>
 
 <script setup>
@@ -77,9 +85,10 @@ div.hero-header {
 
   & > div{
     position: relative;
-
     margin-top: 40px;
     width: 240px;
+
+
   }
 
 }
@@ -111,13 +120,15 @@ section.officers {
     & > h4 {
       text-align: center;
     }
-    
+
     & > img {
       width: 30em;
       border-radius: 10px;
     }
   }
 }
+
+
 
 /* resp */
 @media screen and (max-width: 490px) {
