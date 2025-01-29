@@ -3,17 +3,16 @@
     <img src="/images/events/operation-liquide/wanted-poster.jpg" alt="wanted plan-braquage" />
     <div class="braquageFootage">
       <card-person
-
         post="Braquage Footage"
         :video="['/videos/events/operation-liquide/carDrive.mp4']"
         :avatar="'/images/events/operation-liquide/carBroke.jpg'"
 
       />
       <card-person
-                  post="BONUS SKI"
-                  :video="['/videos/events/operation-liquide/snowVacations.mp4']"
-                  :avatar="'/images/events/operation-liquide/cardWinterVacation.jpg'"/>
-
+          post="🚨 En cavale au ski 🚨"
+          :video="['/videos/events/operation-liquide/snowVacations.mp4']"
+          :avatar="'/images/events/operation-liquide/cardWinterVacation.jpg'"
+      />
     </div>
 
 
@@ -128,7 +127,11 @@ section.officers {
   }
 }
 
-
+div.braquageFootage {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
 
 /* resp */
 @media screen and (max-width: 490px) {

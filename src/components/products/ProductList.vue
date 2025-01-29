@@ -138,6 +138,7 @@ button.order {
   margin: auto;
 
   position: relative;
+  margin-bottom: 1em;
 
   &:hover {
     background-color: var(--orange-2);
