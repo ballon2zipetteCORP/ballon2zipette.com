@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView.vue'
 import OurTeamView from '@/views/OurTeamView.vue'
 import OurEventsView from '@/views/OurEventsView.vue'
 import FlashCompositionVue from '@/views/FlashCompositionVue.vue'
+import OrdersView from "@/views/OrdersView.vue";
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ export default createRouter({
       path: '/flash-composition/:id',
       name: 'flash-composition',
       component: FlashCompositionVue
-    }
+    },
+    {
+      path: '/orders',
+      name: 'orders',
+      component: OrdersView
+    },
   ],
 })

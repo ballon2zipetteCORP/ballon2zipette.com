@@ -17,7 +17,7 @@
         <h4>Composition du flash</h4>
         <ul>
           <li v-for="line in product.attributes.composition" :key="line">
-            {{ line }}
+            {{ line.label }} {{ line.quantity > 0 ? `(${line.quantity}cl)` : '' }}
           </li>
         </ul>
 

@@ -3,7 +3,9 @@
     <h2>Composition du flash</h2>
 
     <ul>
-      <li v-for="line in composition" :key="line">{{line}}</li>
+      <li v-for="line in composition" :key="line">
+        {{line.label}} {{ line.quantity > 0 ? `(${line.quantity}cl)` : '' }}
+      </li>
     </ul>
   </modal-default>
 </template>
