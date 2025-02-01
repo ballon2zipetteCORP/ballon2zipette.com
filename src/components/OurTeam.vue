@@ -33,12 +33,13 @@ import CardCalibre from '@/components/ui/cards/CardDefault.vue'
 const OUR_TEAM = ref([
   { thumbnail: "ballon2zipette.jpg", post: "CEO", video: ["ballon2zipette.mov", "ballon2zipette-2.mp4"]},
   { thumbnail: "momoplansnap.jpg", post: "CEO", video: "momoplansnap.mp4" },
-  { thumbnail: "planBraquageMechant.jpg", post: "CEO", video: ["plan-braquage.mov", "plan-braquage-2.mp4"], boycottRate: 1, boycottReason: "Casse les couilles avec ses snaps à la montagne"},
-  { thumbnail: "panoramix.jpg", post: "Associé.e", video: "panoramix.mp4", boycottRate: 1, boycottReason: "complice de planbraquage" },
+  { thumbnail: "planBraquageMechant.jpg", post: "CEO", video: ["plan-braquage.mov", "plan-braquage-2.mp4"] },
+  { thumbnail: "panoramix.jpg", post: "Associé.e", video: "panoramix.mp4" },
   { thumbnail: "nourisse.jpg", post: "Associé.e" },
   { thumbnail: "panorapetite.jpg", post: "Associé.e", video: "panorapetite.mp4" },
   { thumbnail: "lhotesse.jpg", post: "Associé.e" },
-  { thumbnail: "astronaute.jpg", post: "Associé.e" }
+  { thumbnail: "astronaute.jpg", post: "Associé.e" },
+  { thumbnail: "labougie.jpg", post: "Associé.e" }
 ]);
 
 const OUR_GUNS = ref([
