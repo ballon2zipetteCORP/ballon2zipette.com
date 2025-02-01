@@ -18,7 +18,7 @@
         />
       </section>
 
-      <button v-show="totalQuantity > 0" @click="handleOrderModal" class="icon order">
+      <button v-if="!isDisabled" v-show="totalQuantity > 0" @click="handleOrderModal" class="icon order">
         Commander x{{totalQuantity}}
       </button>
     </article>
@@ -42,7 +42,7 @@ import ProductListItem from '@/components/products/ProductListItem.vue';
 import ProductsOrder from '@/components/products/ProductsOrder.vue'
 import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
 
-const MAX_PRODUCTS_QUANTITY = ref(2); // per persons
+const MAX_PRODUCTS_QUANTITY = ref(1); // per persons
 const props = defineProps({
   title: {
     type: String,
@@ -55,6 +55,10 @@ const props = defineProps({
   },
   items: {
     type: [Array, null],
+    required: true
+  },
+  isDisabled: {
+    type: Boolean,
     required: true
   },
   isLoading: {
@@ -83,7 +87,7 @@ const selectedProducts = computed(() => {
 const showOrderModal = ref(false);
 
 function handleOrderModal() {
-  if(totalQuantity.value < 1)
+  if(props.isDisabled || totalQuantity.value < 1)
     return;
   showOrderModal.value = true;
 }
