@@ -1,8 +1,9 @@
 <template>
-  <operation-liquide />
+  <!--<travaux-a-la-chiche />-->
+  <waiting-screen />
 </template>
 
 <script setup>
-import WaitingScreen from '@/components/WaitingScreen.vue'
-import OperationLiquide from '@/components/events/list/OperationLiquide.vue'
+import TravauxALaChiche from '@/components/events/list/TravauxALaChiche.vue';
+import WaitingScreen from '@/components/WaitingScreen.vue';
 </script>

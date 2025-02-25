@@ -18,6 +18,7 @@ import { computed, ref } from 'vue'
 import PagoFlash from '@/components/events/list/PagoFlash.vue'
 import CustomDropdown from '@/components/ui/CustomDropdown.vue'
 import OperationLiquide from '@/components/events/list/OperationLiquide.vue'
+import TravauxALaChiche from './list/TravauxALaChiche.vue';
 
 const PAGES = ref({
   'pago-flash': {
@@ -28,9 +29,9 @@ const PAGES = ref({
     title: "Opération liquide",
     component: OperationLiquide
   },
-  'ivresse-a-la-chiche': {
-      title: 'Ivresse à la chiche',
-      isComing: true
+  'travaux-a-la-chiche': {
+      title: 'Travaux à la chiche',
+      component: TravauxALaChiche
   },
   'wacky-party': {
     title: "Wacky party",
