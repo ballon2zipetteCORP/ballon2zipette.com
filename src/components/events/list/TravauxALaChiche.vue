@@ -1,6 +1,6 @@
 <template>
     <div class="hero-header">
-        <img alt="hero-header image" src="/images/events/travaux-a-la-chiche/dumb.jpg" />
+        <img alt="hero-header image" src="/images/events/travaux-a-la-chiche/patrouille.jpg" />
         <h1>Travaux à la chiche</h1>
     </div>
     <div class="new">
