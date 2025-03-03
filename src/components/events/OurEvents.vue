@@ -19,6 +19,7 @@ import PagoFlash from '@/components/events/list/PagoFlash.vue'
 import CustomDropdown from '@/components/ui/CustomDropdown.vue'
 import OperationLiquide from '@/components/events/list/OperationLiquide.vue'
 import TravauxALaChiche from './list/TravauxALaChiche.vue';
+import WackyParty from './list/WackyParty.vue';
 
 const PAGES = ref({
   'pago-flash': {
@@ -35,7 +36,7 @@ const PAGES = ref({
   },
   'wacky-party': {
     title: "Wacky party",
-    isComing: true
+    component: WackyParty,
   },
   'tir-aux-ballons': {
     title: "Tir aux ballons",
@@ -43,6 +44,14 @@ const PAGES = ref({
   },
   'mmkhapta': {
     title: "MMKhapta",
+    isComing: true
+  },
+  'jardinage-a-la-chiche': {
+    title: 'Jardinage à la chiche',
+    isComing: true
+  },
+  'casino-a-la-chiche': {
+    title: 'Casino à la chiche',
     isComing: true
   }
 });

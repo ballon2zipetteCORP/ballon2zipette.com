@@ -1,7 +1,9 @@
 <template>
-  <travaux-a-la-chiche />
+  <!--<WackyParty />-->
+  <WaitingScreen />
 </template>
 
 <script setup>
-import TravauxALaChiche from '@/components/events/list/TravauxALaChiche.vue';
+import WackyParty from '@/components/events/list/WackyParty.vue';
+import WaitingScreen from '@/components/WaitingScreen.vue';
 </script>
