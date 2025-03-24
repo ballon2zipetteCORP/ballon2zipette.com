@@ -1,8 +1,13 @@
 <template>
+  <div class="header-title">
+    <h1>⚠️ Travaux à la Chiche ⚠️</h1>
+  </div>
     <div class="hero-header">
         <img alt="hero-header image" src="/images/events/travaux-a-la-chiche/patrouille.jpg" />
-        <h1>Travaux à la chiche</h1>
+        <img src="/images/events/travaux-a-la-chiche/photomemory.jpeg"/>
+
     </div>
+
     <div class="new">
         <h2>
             <span class="new-tag">Nouveauté</span>
@@ -11,15 +16,21 @@
         <h3>Exclusivement pour cette chiche, nous avons prévus du rosé bien BTP bien 8h-16h intérim.</h3>
         <img alt="hero-header image" src="/images/events/travaux-a-la-chiche/cubi.jpg" />
     </div>
+
 </template>
 
 <style scoped>
+div.header-title{
+  margin-top: 3em;
+  text-align: center;
+}
 div.hero-header {
   width: fit-content;
-  margin: 1em auto;
+  margin: 4em auto 1em auto;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 5em;
   justify-content: center;
   align-items: center;
 
@@ -68,4 +79,27 @@ div.new {
         margin-top: 1em;
     }
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-header {
+    gap: 2em;
+  }
+  img {
+    max-width: 20em;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-header {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  img {
+    max-width: 18em;
+  }
+}
+
 </style>
+<script setup lang="ts">
+</script>

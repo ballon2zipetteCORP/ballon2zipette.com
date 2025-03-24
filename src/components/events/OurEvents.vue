@@ -20,6 +20,7 @@ import CustomDropdown from '@/components/ui/CustomDropdown.vue'
 import OperationLiquide from '@/components/events/list/OperationLiquide.vue'
 import TravauxALaChiche from './list/TravauxALaChiche.vue';
 import WackyParty from './list/WackyParty.vue';
+import krakenssat from './list/krakenssat.vue'
 
 const PAGES = ref({
   'pago-flash': {
@@ -33,6 +34,10 @@ const PAGES = ref({
   'travaux-a-la-chiche': {
       title: 'Travaux à la chiche',
       component: TravauxALaChiche
+  },
+  'krakenssat': {
+    title: 'Krakenssat x B2Z',
+    component : krakenssat
   },
   'wacky-party': {
     title: "Wacky party",
