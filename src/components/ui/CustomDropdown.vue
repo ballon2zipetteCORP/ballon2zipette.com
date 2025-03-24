@@ -28,7 +28,7 @@
 import { onMounted, ref } from 'vue'
 import { triggerWhenParentFound } from '@/helpers/global.utils.js'
 
-defineProps({
+const props = defineProps({
   label: {
     type: String,
     required: false
@@ -40,10 +40,18 @@ defineProps({
   items: {
     type: Array,
     required: true
+  },
+  selectionItem : {
+    type: String,
+    required: false
   }
 });
-
+console.log(props.items)
 const selection = defineModel();
+
+if (props.selectionItem) {
+  selection.value = props.items.find(item => item.value === props.selectionItem);
+}
 
 const dropdownRef = ref(null);
 const dropdownToggled = ref(false);

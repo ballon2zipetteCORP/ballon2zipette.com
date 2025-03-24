@@ -4,6 +4,7 @@
       :items="items"
       label="Séléctionner un évènement"
       v-model="selection"
+      :selection-item="selectItem"
     />
   </header>
 
@@ -60,6 +61,8 @@ const PAGES = ref({
     isComing: true
   }
 });
+
+const selectItem = "krakenssat";
 
 
 const items = computed(() =>
