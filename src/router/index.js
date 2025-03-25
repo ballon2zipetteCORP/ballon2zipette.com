@@ -5,6 +5,7 @@ import OurTeamView from '@/views/OurTeamView.vue'
 import OurEventsView from '@/views/OurEventsView.vue'
 import FlashCompositionVue from '@/views/FlashCompositionVue.vue'
 import OrdersView from "@/views/OrdersView.vue";
+import GamesView from '@/views/GamesView.vue'
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,5 +35,10 @@ export default createRouter({
       name: 'orders',
       component: OrdersView
     },
+    {
+      path : '/games',
+      name : 'games',
+      component : GamesView
+    }
   ],
 })

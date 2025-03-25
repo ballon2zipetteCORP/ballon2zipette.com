@@ -24,6 +24,11 @@
             </li>
           </ul>-->
         </li>
+        <li>
+          <router-link active-class="active" :to="{name: 'games'}">
+            Jeux
+          </router-link>
+        </li>
       </ul>
     </nav>
   </header>
@@ -98,3 +103,5 @@ nav>ul {
 }
 
 </style>
+<script setup lang="ts">
+</script>
