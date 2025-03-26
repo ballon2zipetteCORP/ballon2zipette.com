@@ -185,7 +185,7 @@ article {
     position: absolute;
     top: -20px;
     left: 50%;
-
+    text-align: center;
     transform: translateX(-50%);
 
     background-color: var(--orange);
