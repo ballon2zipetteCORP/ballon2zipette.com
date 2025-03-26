@@ -40,7 +40,7 @@ const OUR_TEAM = ref([
   { thumbnail: "lhotesse.jpg", post: "Associé.e" },
   { thumbnail: "astronaute.jpg", post: "Associé.e" },
   { thumbnail: "dj.jpg", post: "Associé.e" },
-  { thumbnail: "fouDuBus.jpg", post: "Associé.e" },
+  { thumbnail: "trafiquant-armes.jpg", post: "Associé.e trafiquant armes" },
   { thumbnail: "spiderman2Lacite.jpg", post: "Associé.e" },
   { thumbnail: "labougie.jpg", post: "Associé.e" }
 ]);
