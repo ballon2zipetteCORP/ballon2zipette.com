@@ -38,7 +38,6 @@ const OUR_TEAM = ref([
   { thumbnail: "nourisse.jpg", post: "Associé.e" },
   { thumbnail: "panorapetite.jpg", post: "Associé.e", video: "panorapetite.mp4" },
   { thumbnail: "lhotesse.jpg", post: "Associé.e" },
-  { thumbnail: "astronaute.jpg", post: "Associé.e" },
   { thumbnail: "dj.jpg", post: "Associé.e" },
   { thumbnail: "trafiquant.jpg", post: "Associé.e trafiquant armes" },
   { thumbnail: "spiderman2Lacite.jpg", post: "Associé.e" },
