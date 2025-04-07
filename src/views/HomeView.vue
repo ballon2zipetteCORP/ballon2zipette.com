@@ -1,11 +1,10 @@
 <template>
   <!--<WackyParty />-->
 <!--  <WaitingScreen />-->
-  <krakenssat></krakenssat>
+  <home></home>
 </template>
 
+
 <script setup>
-import WackyParty from '@/components/events/list/WackyParty.vue';
-import WaitingScreen from '@/components/WaitingScreen.vue';
-import Krakenssat from '@/components/events/list/krakenssat.vue'
+  import home from '@/components/Home.vue'
 </script>
