@@ -1,10 +1,10 @@
 <script setup>
 
-import Games from '@/components/games/Games.vue'
+import Casino from '@/components/games/Casino.vue'
 </script>
 
 <template>
-  <games></games>
+  <casino></casino>
 </template>
 
 <style scoped>

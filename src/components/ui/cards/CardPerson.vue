@@ -192,7 +192,6 @@ article {
     color: var(--black);
     width: fit-content;
     margin: auto;
-    margin-top: 0.5em;
     padding: 0.5em 0.8em;
 
     border-radius: 100px;
