@@ -36,8 +36,8 @@ export default createRouter({
       component: OrdersView
     },
     {
-      path : '/games',
-      name : 'games',
+      path : '/casino',
+      name : 'casino',
       component : GamesView
     }
   ],

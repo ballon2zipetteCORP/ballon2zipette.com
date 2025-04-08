@@ -3,21 +3,20 @@
     <a href="https://casino2zipette.online">
       <img src="/images/casino/logo-roulette-clean.png" alt="Casino" id="roulette">
     </a>
-
-    <h1>Jeu de la fusée</h1>
-
+    <card-game :description="'VAS JOUER AU JEU QUI REND TOUT LE MONDE GUEDIN'" :path="'/images/casino/kaarisPlane.png'" :title="'Jeu de la Fusée'" :link="'https://casino2zipette.online/games/aviator-crash'"></card-game>
   </div>
 
 </template>
 
 <script setup>
 
+import CardGame from '@/components/ui/CardGame.vue'
 </script>
 
 <style scoped>
 
 #roulette {
-  width: 30%;
+  width:15%;
   display: block;
   margin: 2em auto;
   transition: transform 0.3s ease;

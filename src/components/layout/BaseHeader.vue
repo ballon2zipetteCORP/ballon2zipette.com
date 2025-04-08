@@ -25,7 +25,7 @@
           </ul>-->
         </li>
         <li>
-          <router-link active-class="active" :to="{name: 'games'}">
+          <router-link active-class="active" :to="{name: 'casino'}">
             Jeux
           </router-link>
         </li>

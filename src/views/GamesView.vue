@@ -1,6 +1,6 @@
 <script setup>
 
-import Casino from '@/components/games/Casino.vue'
+import Casino from '@/components/casino/Casino.vue'
 </script>
 
 <template>
